@@ -1,0 +1,131 @@
+.header {
+  max-width: 1280px;
+  background-color: #FFFFFF;
+  margin: 0 auto;
+  padding-top: 18px;
+  padding-right: 70px;
+  padding-bottom: 18px;
+  padding-left: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.header__logo {
+  background-image: url(../../images/logo.svg);
+  width: 38px;
+  height: 38px;
+  opacity: 1;
+  display: inline-block;
+  transition: opacity .3s;
+}
+
+.header__logo:hover {
+  opacity: .7;
+  transition: opacity .3s;
+}
+
+.header__button {
+  width: 100px;
+  height: 32px;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  color: #000000;
+  background-color: #FFFFFF;
+  border: 2px solid rgba(170, 170, 170, 0.2);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: border .3s;
+  margin-left: auto;
+}
+
+.header__button:hover {
+  border: 2px solid rgba(0, 0, 0, 0.4);
+  transition: border .3s;
+}
+
+.header__button-icon {
+  background-image: url(../../images/icon-user.svg);
+  background-repeat: no-repeat;
+  width: 12px;
+  height: 14px;
+  display: inline-block;
+  margin-left: 4px;
+  margin-right: 7px;
+}
+
+.header__link {
+  text-decoration: none;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #000000;
+  opacity: 1;
+  transition: opacity .3s;
+}
+
+.header__link:hover {
+  opacity: .7;
+  transition: opacity .3s;
+}
+
+.header__link_dark {
+  color: #FFFFFF;
+  background-color: #000000;
+  border-radius: 3px;
+  margin-left: 30px;
+  padding-top: 8px;
+  padding-right: 20px;
+  padding-bottom: 8px;
+  padding-left: 20px;
+}
+
+.header__user-nav {
+  margin-left: auto;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  margin-left: 44px;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__list:last-child {
+  padding-right: 0;
+}
+
+.nav__item {
+  padding-right: 16px;
+}
+
+.nav__link {
+  text-decoration: none;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.38;
+  color: #000000;
+  opacity: 1;
+  transition: opacity .3s;
+}
+
+.nav__link:hover {
+  opacity: .7;
+  transition: opacity .3s;
+}
+
+.nav__link_active {
+  font-weight: 500;
+}

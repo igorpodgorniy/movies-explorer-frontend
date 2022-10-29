@@ -1,1 +1,1 @@
-# Movies-explorer-frontend
+# movies-explorer-frontend
