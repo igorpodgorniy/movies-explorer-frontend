@@ -62,3 +62,85 @@
 .first-screen__button:active {
   box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.2);
 }
+
+.about-project {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-top: 110px;
+  padding-bottom: 110px;
+}
+
+.about-project__list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 70px;
+  display: flex;
+  gap: 54px;
+}
+
+.about-roject__title {
+  margin: 0;
+  padding-bottom: 26px;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+.about-project__text {
+  margin: 0;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+  color: #000000;
+}
+
+.about-project__timeline {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  row-gap: 5px;
+  text-align: center;
+  padding-top: 95px;
+}
+
+.about-project__time {
+  padding-top: 9px;
+  padding-bottom: 9px;
+  background-color: #F2F2F2;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  color: #000000;
+}
+
+.about-project__time_dark {
+  color: #FFFFFF;
+  background-color: #000000;
+}
+
+.about-project__time-title {
+  padding-top: 9px;
+  padding-bottom: 9px;
+  margin: 0;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  color: #A0A0A0;
+}
+
+.section-title {
+  margin: 0;
+  padding-bottom: 23px;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.23;
+  letter-spacing: -0.04em;
+  color: #000000;
+  border-bottom: 1px solid #000000;
+}

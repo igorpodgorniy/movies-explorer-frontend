@@ -8,6 +8,7 @@
   padding-left: 70px;
   display: flex;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .header__logo {
