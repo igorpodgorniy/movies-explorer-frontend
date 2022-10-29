@@ -85,7 +85,12 @@
 }
 
 .header__user-nav {
+  list-style: none;
+  padding-left: 0;
   margin-left: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  display: flex;
 }
 
 .nav {
@@ -102,12 +107,12 @@
   padding: 0;
 }
 
-.nav__list:last-child {
-  padding-right: 0;
-}
-
 .nav__item {
   padding-right: 16px;
+}
+
+.nav__item:last-child {
+  padding-right: 0;
 }
 
 .nav__link {
