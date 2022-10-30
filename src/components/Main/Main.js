@@ -7,12 +7,12 @@ function Main() {
       <section className="first-screen">
         <h1 className="first-screen__title">Учебный проект студента факультета Веб-разработки.</h1>
         <ul className="first-screen__buttons">
-          <li><button type="button" className="first-screen__button">О проекте</button></li>
-          <li><button type="button" className="first-screen__button">Технологии</button></li>
-          <li><button type="button" className="first-screen__button">Студент</button></li>
+          <li><a href="#aboutProject" className="first-screen__button">О проекте</a></li>
+          <li><a href="#aboutTechnologies" className="first-screen__button">Технологии</a></li>
+          <li><a href="#aboutStudent" className="first-screen__button">Студент</a></li>
         </ul>
       </section>
-      <section className="about-project">
+      <section id="aboutProject" className="about-project">
         <h2 className="section-title">О проекте</h2>
         <ul className="about-project__list">
           <li>
@@ -31,7 +31,7 @@ function Main() {
           <h4 className="about-project__time-title">Front-end</h4>
         </section>
       </section>
-      <section className="technologies">
+      <section id="aboutTechnologies" className="technologies">
         <h2 className="section-title">Технологии</h2>
         <h3 className="technologies__subtitle">7 технологий</h3>
         <p className="technologies__text">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
@@ -45,7 +45,7 @@ function Main() {
           <li className="technologies__item">mongoDB</li>
         </ul>
       </section>
-      <section className="about-student">
+      <section id="aboutStudent" className="about-student">
         <h2 className="section-title">Студент</h2>
         <div className="about-student__info">
           <div className="about-student__info-text">

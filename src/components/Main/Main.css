@@ -40,17 +40,19 @@
 .first-screen__button {
   background-color: #E8E8E8;
   border-radius: 10px;
-  border: 0;
+  box-sizing: border-box;
   padding-top: 10px;
-  padding-right: 13.5px;
-  padding-bottom: 10px;
-  padding-left: 13.5px;
+  border: 0;
+  width: 96px;
+  height: 36px;
   color: #FFFFFF;
   font-family: 'Inter', 'Arial', sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
   transition: box-shadow .3s;
 }
 
@@ -66,8 +68,8 @@
 .about-project {
   max-width: 1140px;
   margin: 0 auto;
-  padding-top: 110px;
-  padding-bottom: 110px;
+  padding-top: 111px;
+  padding-bottom: 101px;
 }
 
 .about-project__list {
@@ -101,7 +103,7 @@
 .about-project__timeline {
   display: grid;
   grid-template-columns: 20% 80%;
-  row-gap: 5px;
+  row-gap: 6px;
   text-align: center;
   padding-top: 95px;
 }
@@ -135,7 +137,7 @@
 
 .section-title {
   margin: 0;
-  padding-bottom: 23px;
+  padding-bottom: 22px;
   font-family: 'Inter', 'Arial', sans-serif;
   font-weight: 400;
   font-size: 22px;
@@ -200,7 +202,7 @@
   width: 90px;
   height: 60px;
   text-align: center;
-  padding-top: 21px;
+  padding-top: 22px;
   box-sizing: border-box;
 }
 
@@ -212,8 +214,8 @@
 }
 
 .about-student__info {
-  padding-top: 66px;
-  padding-bottom: 101px;
+  padding-top: 67px;
+  padding-bottom: 100px;
   display: flex;
 }
 
@@ -238,7 +240,7 @@
   line-height: 1.11;
   color: #000000;
   margin: 0;
-  padding-top: 18px;
+  padding-top: 19px;
 }
 
 .about-student__text {
@@ -278,7 +280,7 @@
 
 .about-student__subtitle {
   margin: 0;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
   font-family: 'Inter', 'Arial', sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -310,6 +312,7 @@
   font-weight: 400;
   font-size: 30px;
   line-height: 1.67;
+  letter-spacing: -0.04em;
   color: #000000;
   transition: margin-top .2s, margin-bottom .2s;
 }
@@ -331,5 +334,6 @@
   background-repeat: no-repeat;
   width: 18px;
   margin-left: auto;
-  margin-top: 10px;
+  margin-top: 19px;
+  margin-right: 6px;
 }
