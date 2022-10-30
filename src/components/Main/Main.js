@@ -30,6 +30,20 @@ function Main() {
           <h4 class="about-project__time-title">Front-end</h4>
         </section>
       </section>
+      <section class="technologies">
+        <h2 class="section-title">Технологии</h2>
+        <h3 class="technologies__subtitle">7 технологий</h3>
+        <p class="technologies__text">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
+        <ul class="technologies__list">
+          <li class="technologies__item">HTML</li>
+          <li class="technologies__item">CSS</li>
+          <li class="technologies__item">JS</li>
+          <li class="technologies__item">React</li>
+          <li class="technologies__item">Git</li>
+          <li class="technologies__item">Express.js</li>
+          <li class="technologies__item">mongoDB</li>
+        </ul>
+      </section>
     </main>
   );
 }
