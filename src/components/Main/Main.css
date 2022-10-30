@@ -213,6 +213,7 @@
 
 .about-student__info {
   padding-top: 66px;
+  padding-bottom: 101px;
   display: flex;
 }
 
@@ -273,4 +274,62 @@
   height: 327px;
   margin-left: auto;
   border-radius: 10px;
+}
+
+.about-student__subtitle {
+  margin: 0;
+  padding-bottom: 50px;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.11;
+  color: #A0A0A0;
+}
+
+.about-student__portfolio {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.about-student__item {
+  border-bottom: 1px solid #E8E8E8;
+  padding-top: 20px;
+  padding-bottom: 19px;
+}
+
+.about-student__item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.about-student__portfolio-link {
+  text-decoration: none;
+  display: flex;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.67;
+  color: #000000;
+  transition: margin-top .2s, margin-bottom .2s;
+}
+
+.about-student__portfolio-link:hover {
+  margin-top: -5px;
+  margin-bottom: 5px;
+  transition: margin-top .2s, margin-bottom .2s;
+}
+
+.about-student__portfolio-link:active {
+  margin-top: 2px;
+  margin-bottom: -2px;
+  transition: margin-top .2s, margin-bottom .2s;
+}
+
+.about-student__arrow {
+  background-image: url(../../images/arrow.svg);
+  background-repeat: no-repeat;
+  width: 18px;
+  margin-left: auto;
+  margin-top: 10px;
 }

@@ -60,6 +60,27 @@ function Main() {
           </div>
           <img className="about-student__img" src={photo} alt="Фотография студента" />
         </div>
+        <h3 className="about-student__subtitle">Портфолио</h3>
+      <ul className="about-student__portfolio">
+        <li className="about-student__item">
+          <a href="#" className="about-student__portfolio-link">
+            <span>Статичный сайт</span>
+            <span className="about-student__arrow"></span>
+          </a>
+        </li>
+        <li className="about-student__item">
+          <a href="#" className="about-student__portfolio-link">
+            <span>Адаптивный сайт</span>
+            <span className="about-student__arrow"></span>
+          </a>
+        </li>
+        <li className="about-student__item">
+          <a href="#" className="about-student__portfolio-link">
+            <span>Одностраничное приложение</span>
+            <span className="about-student__arrow"></span>
+          </a>
+        </li>
+      </ul>
       </section>
     </main>
   );
