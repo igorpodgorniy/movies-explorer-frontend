@@ -84,3 +84,39 @@
 .film__favorite_active {
   background-color: #2BE080;
 }
+
+.more {
+  max-width: 1280px;
+  height: 166px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.more__button {
+  width: 320px;
+  height: 36px;
+  cursor: pointer;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.25;
+  color: #000000;
+  background-color: #F9F9F9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 6px;
+  transition: box-shadow .3s;
+}
+
+.more__button:hover {
+  box-shadow: 0px 2px 8px -2px rgba(0, 0, 0, 0.2);
+  transition: box-shadow .3s;
+}
+
+.more__button:active {
+  box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.2);
+}
