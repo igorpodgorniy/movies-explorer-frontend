@@ -5,16 +5,18 @@ import Main from '../Main/Main';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import NotFound from '../NotFound/NotFound';
+import Profile from '../Profile/Profile';
 
 function App() {
   return (
     <>
-      <NotFound></NotFound>
       <Header></Header>
+      <Profile></Profile>
       <SearchForm></SearchForm>
       <MoviesCardList></MoviesCardList>
       <Main></Main>
       <Footer></Footer>
+      <NotFound></NotFound>
     </>
   );
 }
