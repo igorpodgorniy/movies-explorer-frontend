@@ -6,10 +6,14 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import NotFound from '../NotFound/NotFound';
 import Profile from '../Profile/Profile';
+import Register from '../Register/Register';
+import Login from '../Login/Login';
 
 function App() {
   return (
     <>
+      <Login></Login>
+      <Register></Register>
       <Header></Header>
       <Profile></Profile>
       <SearchForm></SearchForm>
