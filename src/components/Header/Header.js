@@ -2,7 +2,7 @@ import './Header.css';
 
 function Header() {
   return (
-    <header className="header">
+    <header className="header header_type_all">
       <a href="#" className="header__logo"></a>
       <nav className="nav">
         <ul className="nav__list">
@@ -14,10 +14,15 @@ function Header() {
         <span className="header__button-icon"></span>
         Аккаунт
       </button>
-      {/* <ul className="header__user-nav">
+      {/* <div class="header__hamburger">
+        <div class="header__nav-bar header__nav-bar_position_top"></div>
+        <div class="header__nav-bar header__nav-bar_position_middle"></div>
+        <div class="header__nav-bar header__nav-bar_position_bottom"></div>
+      </div> */}
+      <ul className="header__user-nav">
         <li><a href="#" className="header__link">Регистрация</a></li>
         <li><a href="#" className="header__link header__link_dark">Войти</a></li>
-      </ul> */}
+      </ul>
     </header>
   )
 }

@@ -81,3 +81,17 @@
 .profile__button_color_red {
   color: #FF4062;
 }
+
+@media screen and (max-width: 768px) {
+  .profile {
+    padding-top: 220px;
+  }
+
+  .profile__title {
+    padding-bottom: 80px;
+  }
+
+  .profile__label {
+    margin-bottom: 209px;
+  }
+}

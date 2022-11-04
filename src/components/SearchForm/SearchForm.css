@@ -140,3 +140,24 @@
   padding-left: 14px;
   padding-top: 1px;
 }
+
+@media screen and (max-width: 768px) {
+  .search-bar {
+    max-width: 708px;
+    padding-top: 80px;
+    padding-bottom: 109px;
+    margin-left: 30px;
+  }
+
+  .search-bar__input {
+    width: 350px;
+  }
+
+  .search-bar__container {
+    padding-right: 20px;
+  }
+
+  .search-bar__short-film {
+    padding-left: 20px;
+  }
+}
