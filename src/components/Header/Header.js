@@ -14,10 +14,10 @@ function Header() {
         <span className="header__button-icon"></span>
         Аккаунт
       </button>
-      <ul className="header__user-nav">
+      {/* <ul className="header__user-nav">
         <li><a href="#" className="header__link">Регистрация</a></li>
         <li><a href="#" className="header__link header__link_dark">Войти</a></li>
-      </ul>
+      </ul> */}
     </header>
   )
 }

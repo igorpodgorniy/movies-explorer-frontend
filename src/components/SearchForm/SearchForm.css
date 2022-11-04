@@ -18,6 +18,8 @@
   padding-bottom: 16px;
   padding-left: 19px;
   display: flex;
+  height: 72px;
+  box-sizing: border-box;
 }
 
 .search-bar__icon {
@@ -25,6 +27,7 @@
   background-repeat: no-repeat;
   width: 34px;
   height: 34px;
+  margin-top: 3px;
 }
 
 .search-bar__input {
@@ -60,6 +63,7 @@
   border-radius: 48px;
   margin-left: 46px;
   margin-right: 19px;
+  margin-top: 3px;
   cursor: pointer;
   background-image: url(../../images/search-icon-white.svg);
   background-repeat: no-repeat;
@@ -134,4 +138,5 @@
   line-height: 1.38;
   color: #000000;
   padding-left: 14px;
+  padding-top: 1px;
 }

@@ -16,7 +16,7 @@ function Profile() {
           />
         </label>
         <label className="profile__label">
-          Email
+          E-mail
           <input
             className="profile__input"
             name="email"

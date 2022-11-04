@@ -125,6 +125,46 @@ function MoviesCardList() {
             </div>
           </article>
         </li>
+        <li>
+          <article className="film">
+            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
+            <div className="film__info">
+              <h2 className="film__name">33 слова о дизайне</h2>
+              <p className="film__duration">1ч42м</p>
+              <button className="film__favorite film__favorite_active" type="button" aria-label="Сохранить фильм"></button>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article className="film">
+            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
+            <div className="film__info">
+              <h2 className="film__name">33 слова о дизайне</h2>
+              <p className="film__duration">1ч42м</p>
+              <button className="film__favorite" type="button" aria-label="Сохранить фильм"></button>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article className="film">
+            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
+            <div className="film__info">
+              <h2 className="film__name">33 слова о дизайне</h2>
+              <p className="film__duration">1ч42м</p>
+              <button className="film__favorite film__favorite_active" type="button" aria-label="Сохранить фильм"></button>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article className="film">
+            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
+            <div className="film__info">
+              <h2 className="film__name">33 слова о дизайне</h2>
+              <p className="film__duration">1ч42м</p>
+              <button className="film__favorite film__favorite_active" type="button" aria-label="Сохранить фильм"></button>
+            </div>
+          </article>
+        </li>
       </ul>
       <section className="more">
         <button className="more__button" type="button" aria-label="Подгрузить ещё фильмы">Ещё</button>

@@ -12,14 +12,14 @@ import Login from '../Login/Login';
 function App() {
   return (
     <>
-      <Login></Login>
-      <Register></Register>
-      <Header></Header>
-      <Profile></Profile>
-      <SearchForm></SearchForm>
-      <MoviesCardList></MoviesCardList>
-      <Main></Main>
-      <Footer></Footer>
+      {/* <Login></Login> */}
+      {/* <Register></Register> */}
+      {/* <Header></Header>
+      <Profile></Profile> */}
+      {/* <SearchForm></SearchForm>
+      <MoviesCardList></MoviesCardList> */}
+      {/* <Main></Main> */}
+      {/* <Footer></Footer> */}
       <NotFound></NotFound>
     </>
   );

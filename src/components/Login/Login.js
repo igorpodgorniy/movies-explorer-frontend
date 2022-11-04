@@ -24,7 +24,7 @@ function Login() {
             type="password"
             placeholder="Введите пароль"
           />
-          <button type="submit" className="sign__button sign__button_bottom">Войти</button>
+          <button type="submit" className="sign__button">Войти</button>
         </fieldset>
         <p className="sign__text">Ещё не зарегистрированы?<a href="#" className="sign__link">Регистрация</a></p>
       </form>
