@@ -346,7 +346,7 @@
 
   .first-screen {
     margin-left: 20px;
-    margin-right: 2px;
+    margin-right: 20px;
   }
 
   .first-screen__title {
@@ -385,7 +385,7 @@
   .technologies {
     padding-top: 89px;
     padding-left: 50px;
-    padding-right: 32px;
+    padding-right: 50px;
     padding-bottom: 90px;
   }
 
@@ -410,7 +410,7 @@
   .about-student {
     padding-top: 92px;
     padding-left: 50px;
-    padding-right: 32px;
+    padding-right: 50px;
     padding-bottom: 90px;
   }
 
@@ -452,5 +452,184 @@
 
   .about-student__item {
     padding-bottom: 18px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .first-screen {
+    margin-top: 14px;
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+
+  .first-screen__title {
+    padding-top: 220px;
+    padding-bottom: 212px;
+    font-size: 29px;
+    line-height: 1.28;
+  }
+
+  .first-screen__buttons {
+    gap: 6px;
+    padding-bottom: 17px;
+  }
+
+  .first-screen__button {
+    width: 82px;
+    height: 26px;
+    font-size: 10px;
+    line-height: 1.6;
+    padding-top: 5px;
+    border-radius: 6px;
+  }
+
+  .about-project {
+    padding-top: 71px;
+    padding-bottom: 70px;
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    line-height: 1.22;
+    padding-bottom: 27px;
+  }
+
+  .about-project__list {
+    margin-top: 61px;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .about-roject__title {
+    font-size: 18px;
+    line-height: 1.22;
+    padding-bottom: 16px;
+  }
+
+  .about-project__text {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .about-project__timeline {
+    padding-top: 43px;
+    row-gap: 10px;
+    grid-template-columns: 35.2% 64.8%;
+  }
+
+  .about-project__time {
+    font-size: 11px;
+    line-height: 1.18;
+    padding-top: 12px;
+    padding-bottom: 10px;
+  }
+
+  .about-project__time-title {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 1.18;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .technologies {
+    background-color: #FFFFFF;
+    padding-top: 71px;
+    padding-left: 18px;
+    padding-bottom: 70px;
+    padding-right: 18px;
+  }
+
+  .technologies__subtitle {
+    font-size: 30px;
+    line-height: 1.2;
+    margin-top: 60px;
+    margin-bottom: 25px;
+  }
+
+  .technologies__text {
+    font-size: 11px;
+    line-height: 1.45;
+    padding-bottom: 50px;
+  }
+
+  .technologies__list {
+    display: grid;
+    grid-template-columns: 84px 84px;
+    gap: 10px;
+  }
+
+  .technologies__item {
+    padding-top: 21px;
+  }
+
+  .about-student {
+    padding-top: 71px;
+    padding-left: 14px;
+    padding-bottom: 70px;
+    padding-right: 14px;
+  }
+
+  .about-student__info {
+    display: grid;
+    padding-top: 59px;
+    padding-bottom: 69px;
+    gap: 39px;
+  }
+
+  .about-student__img {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    width: 100%;
+    height: auto;
+  }
+
+  .about-student__name {
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .about-student__position {
+    padding-top: 21px;
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .about-student__text {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .about-student__link {
+    margin-top: 40px;
+  }
+
+  .about-student__subtitle {
+    font-size: 14px;
+    line-height: 1.43;
+    padding-bottom: 20px;
+  }
+
+  .about-student__portfolio-link {
+    font-size: 18px;
+    line-height: 1.56;
+  }
+
+  .about-student__arrow {
+    background-image: url(../../images/arrow-small.svg);
+    width: 18px;
+    height: 28px;
+    margin-top: 6px;
+    font-size: 18px;
+    margin-right: -3px;
+  }
+
+  .about-student__item {
+    padding-top: 21px;
+    padding-bottom: 12px;
   }
 }
