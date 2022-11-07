@@ -1,7 +1,8 @@
 .profile {
   max-width: 410px;
   margin: 0 auto;
-  padding-top: 58px;
+  padding-top: 74px;
+  padding-bottom: 40px;
 }
 
 .profile__form {
@@ -9,13 +10,14 @@
 }
 
 .profile__title {
+  margin: 0;
   font-family: 'Inter', 'Arial', sans-serif;
   font-weight: 500;
   font-size: 24px;
   line-height: 1.21;
   color: #000000;
   text-align: center;
-  padding-bottom: 108px;
+  padding-bottom: 123px;
 }
 
 .profile__label {
@@ -84,14 +86,30 @@
 
 @media screen and (max-width: 768px) {
   .profile {
-    padding-top: 220px;
+    padding-top: 236px;
   }
 
   .profile__title {
-    padding-bottom: 80px;
+    padding-bottom: 97px;
   }
 
   .profile__label {
     margin-bottom: 209px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile {
+    padding-top: 70px;
+    max-width: 260px;
+  }
+
+  .profile__label {
+    margin-bottom: 378px;
+  }
+
+  .profile__button {
+    font-size: 12px;
+    line-height: 1.25;
   }
 }

@@ -188,4 +188,14 @@ html {
     padding-bottom: 7px;
     padding-left: 12px;
   }
+
+  .header__hamburger {
+    gap: 6.5px;
+    margin-top: 1px;
+  }
+
+  .header__nav-bar {
+    width: 22px;
+    height: 2.5px;
+  }
 }

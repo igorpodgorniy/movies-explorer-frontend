@@ -14,13 +14,13 @@ function App() {
     <>
       {/* <Login></Login> */}
       {/* <Register></Register> */}
-      <Header></Header>
-      {/* <Profile></Profile> */}
+      {/* <Header></Header>
+      <Profile></Profile> */}
       {/* <SearchForm></SearchForm> */}
       {/* <MoviesCardList></MoviesCardList> */}
-      <Main></Main>
-      <Footer></Footer>
-      {/* <NotFound></NotFound> */}
+      {/* <Main></Main> */}
+      {/* <Footer></Footer> */}
+      <NotFound></NotFound>
     </>
   );
 }

@@ -144,3 +144,27 @@
     margin-left: 224px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .films {
+    padding-top: 40px;
+    padding-left: 10px;
+    margin: 0 auto;
+    grid-template-columns: 300px;
+    row-gap: 20px;
+  }
+
+  .film__duration {
+    padding-top: 11px;
+    padding-bottom: 13px;
+  }
+
+  .more {
+    margin-left: 40px;
+  }
+
+  .more__button {
+    width: 240px;
+    padding-top: 2px;
+  }
+}

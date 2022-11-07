@@ -55,7 +55,7 @@ function MoviesCardList() {
             </div>
           </article>
         </li>
-        <li>
+        {/* <li>
           <article className="film">
             <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
             <div className="film__info">
@@ -64,8 +64,8 @@ function MoviesCardList() {
               <button className="film__favorite film__favorite_active" type="button" aria-label="Сохранить фильм"></button>
             </div>
           </article>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
           <article className="film">
             <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
             <div className="film__info">
@@ -84,7 +84,7 @@ function MoviesCardList() {
               <button className="film__favorite film__favorite_active" type="button" aria-label="Сохранить фильм"></button>
             </div>
           </article>
-        </li>
+        </li> */}
         {/* <li>
           <article className="film">
             <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
