@@ -338,7 +338,7 @@
   margin-right: 6px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1230px) {
   .main {
     margin-left: 0;
     margin-right: 0px;
@@ -361,7 +361,8 @@
     padding-top: 91px;
     padding-bottom: 83px;
     margin-left: 50px;
-    max-width: 668px;
+    margin-right: 50px;
+    max-width: 100%;
   }
 
   .about-project__list {
@@ -455,7 +456,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 600px) {
   .first-screen {
     margin-top: 14px;
     margin-left: 14px;

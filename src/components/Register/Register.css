@@ -143,7 +143,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 500px) {
   .header_type_sign {
     justify-content: center;
     padding-top: 56px;

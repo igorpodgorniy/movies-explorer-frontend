@@ -52,7 +52,7 @@
   transition: text-shadow .2s, margin-bottom .2s, margin-top .2s;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 500px) {
   .not-found {
     width: 300px;
   }

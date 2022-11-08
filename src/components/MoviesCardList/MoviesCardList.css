@@ -122,6 +122,12 @@
   box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.2);
 }
 
+@media screen and (max-width: 1100px) {
+  .films {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media screen and (max-width: 768px) {
   .films {
     padding-top: 70px;
@@ -129,7 +135,8 @@
     padding-bottom: 30px;
     padding-left: 0;
     margin-left: 30px;
-    grid-template-columns: 339px 339px;
+    margin-right: 30px;
+    grid-template-columns: 1fr 1fr;
     row-gap: 36px;
     column-gap: 30px;
   }
@@ -138,29 +145,20 @@
     max-width: 339px;
     margin-right: 0;
   }
-
-  .more {
-    display: block;
-    margin-left: 224px;
-  }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 500px) {
   .films {
     padding-top: 40px;
-    padding-left: 10px;
     margin: 0 auto;
     grid-template-columns: 300px;
     row-gap: 20px;
+    justify-content: center;
   }
 
   .film__duration {
     padding-top: 11px;
     padding-bottom: 13px;
-  }
-
-  .more {
-    margin-left: 40px;
   }
 
   .more__button {

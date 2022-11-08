@@ -56,6 +56,13 @@
   transition: opacity .3s;
 }
 
+@media screen and (max-width: 1180px) {
+  .footer {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .footer {
     margin-left: 30px;
@@ -63,7 +70,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 500px) {
   .footer {
     margin-left: 10px;
     margin-right: 10px;
@@ -79,8 +86,8 @@
   .footer__vault {
     padding-top: 28px;
     padding-bottom: 10px;
-    padding-left: 94px;
     display: grid;
+    justify-content: center;
     gap: 27px;
   }
 

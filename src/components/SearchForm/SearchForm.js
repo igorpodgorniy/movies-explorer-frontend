@@ -6,7 +6,7 @@ function SearchForm() {
       <div className="search-bar__container">
         <span className="search-bar__icon"></span>
         <input type="search" className="search-bar__input" placeholder="Фильм"/>
-        <button type="button" className="search-bar__button"></button>
+        <button type="button" className="search-bar__button" aria-label="Найти фильм"></button>
         <div className="search-bar__short-film">
           <input type="checkbox" className="search-bar__checkbox" id="shortFilm" />
           <label for="shortFilm" className="search-bar__checkbox-label"></label>
