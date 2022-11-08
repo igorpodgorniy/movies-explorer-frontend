@@ -56,6 +56,11 @@
   transition: opacity .3s;
 }
 
+.footer__link:active {
+  opacity: .3;
+  transition: opacity .3s;
+}
+
 @media screen and (max-width: 1180px) {
   .footer {
     margin-left: 30px;

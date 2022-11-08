@@ -21,12 +21,18 @@ html {
   height: 38px;
   opacity: 1;
   display: inline-block;
+  border-radius: 6px;
   transition: opacity .3s;
 }
 
 .header__logo:hover {
-  opacity: .7;
-  transition: opacity .3s;
+  box-shadow: 0px 10px 16px 0 rgb(0 0 0 / 20%);
+  transition: box-shadow .3s;
+}
+
+.header__logo:active {
+  box-shadow: 0px 4px 5px 0 rgb(0 0 0 / 20%);
+  transition: box-shadow .3s;
 }
 
 .header__button {
@@ -43,13 +49,17 @@ html {
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: border .3s;
+  transition: box-shadow .3s;;
   margin-left: auto;
 }
 
 .header__button:hover {
-  border: 2px solid rgba(0, 0, 0, 0.4);
-  transition: border .3s;
+  box-shadow: 0px 2px 8px -2px rgb(0 0 0 / 20%);
+  transition: box-shadow .3s;
+}
+
+.header__button:active {
+  box-shadow: 0px 1px 5px -2px rgb(0 0 0 / 20%);
 }
 
 .header__button-icon {
@@ -78,6 +88,11 @@ html {
   transition: opacity .3s;
 }
 
+.header__link:active {
+  opacity: .3;
+  transition: opacity .3s;
+}
+
 .header__link_dark {
   color: #FFFFFF;
   background-color: #000000;
@@ -87,6 +102,17 @@ html {
   padding-right: 20px;
   padding-bottom: 8px;
   padding-left: 20px;
+}
+
+.header__link_dark:hover {
+  opacity: 1;
+  box-shadow: 0px 10px 16px 0 rgb(0 0 0 / 20%);
+  transition: box-shadow .3s;
+}
+
+.header__link_dark:active {
+  opacity: 1;
+  box-shadow: 0px 4px 5px 0 rgb(0 0 0 / 20%);
 }
 
 .header__user-nav {
@@ -133,6 +159,11 @@ html {
 
 .nav__link:hover {
   opacity: .7;
+  transition: opacity .3s;
+}
+
+.nav__link:active {
+  opacity: .3;
   transition: opacity .3s;
 }
 

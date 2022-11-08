@@ -56,7 +56,7 @@
 }
 
 .sign__input:focus-visible {
-  outline: 0;
+  outline: #000000 auto 1px;
 }
 
 .sign__input:last-of-type {

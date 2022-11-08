@@ -271,6 +271,11 @@
   transition: opacity .3s;
 }
 
+.about-student__link:active {
+  opacity: .3;
+  transition: opacity .3s;
+}
+
 .about-student__img {
   width: 270px;
   height: 327px;
