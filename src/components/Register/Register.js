@@ -1,4 +1,5 @@
 import './Register.css';
+import { NavLink } from 'react-router-dom';
 
 function Register() {
   return (
@@ -36,7 +37,7 @@ function Register() {
           <span className="sign__error">Что-то пошло не так...</span>
           <button type="submit" className="sign__button">Зарегистрироваться</button>
         </fieldset>
-        <p className="sign__text">Уже зарегистрированы?<a href="#" className="sign__link">Войти</a></p>
+        <p className="sign__text">Уже зарегистрированы?<NavLink to="/signin" className="sign__link">Войти</NavLink></p>
       </form>
     </>
   );

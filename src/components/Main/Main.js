@@ -56,26 +56,26 @@ function Main() {
               С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб&#8209;разработке,
               начал заниматься фриланс&#8209;заказами&nbsp;и ушёл с постоянной работы.
             </p>
-            <a href="#" className="about-student__link">Github</a>
+            <a href="https://github.com/igorpodgorniy" className="about-student__link" target="_blank">Github</a>
           </div>
           <img className="about-student__img" src={photo} alt="Фотография студента" />
         </div>
         <h3 className="about-student__subtitle">Портфолио</h3>
       <ul className="about-student__portfolio">
         <li className="about-student__item">
-          <a href="#" className="about-student__portfolio-link">
+          <a href="https://github.com/igorpodgorniy/how-to-learn" className="about-student__portfolio-link" target="_blank">
             <span>Статичный сайт</span>
             <span className="about-student__arrow"></span>
           </a>
         </li>
         <li className="about-student__item">
-          <a href="#" className="about-student__portfolio-link">
+          <a href="https://github.com/igorpodgorniy/russian-travel" className="about-student__portfolio-link" target="_blank">
             <span>Адаптивный сайт</span>
             <span className="about-student__arrow"></span>
           </a>
         </li>
         <li className="about-student__item">
-          <a href="#" className="about-student__portfolio-link">
+          <a href="https://github.com/igorpodgorniy/react-mesto-api-full" className="about-student__portfolio-link" target="_blank">
             <span>Одностраничное приложение</span>
             <span className="about-student__arrow"></span>
           </a>

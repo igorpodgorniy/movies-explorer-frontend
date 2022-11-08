@@ -7,8 +7,8 @@ function Footer() {
       <section className="footer__vault">
         <p className="footer__copyright">&copy; 2022</p>
         <ul className="footer__links">
-          <li><a href="#" className="footer__link">Яндекс.Практикум</a></li>
-          <li><a href="#" className="footer__link">Github</a></li>
+          <li><a href="https://practicum.yandex.ru/" className="footer__link" target="_blank">Яндекс.Практикум</a></li>
+          <li><a href="https://github.com/igorpodgorniy" className="footer__link" target="_blank">Github</a></li>
         </ul>
       </section>
     </footer>

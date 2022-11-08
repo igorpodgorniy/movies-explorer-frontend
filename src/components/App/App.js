@@ -1,4 +1,5 @@
 import './App.css';
+import { Route, Switch } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
@@ -12,15 +13,38 @@ import Login from '../Login/Login';
 function App() {
   return (
     <>
-      {/* <Login></Login> */}
-      {/* <Register></Register> */}
-      <Header></Header>
-      {/* <Profile></Profile> */}
-      {/* <SearchForm></SearchForm>
-      <MoviesCardList></MoviesCardList> */}
-      <Main></Main>
-      <Footer></Footer>
-      {/* <NotFound></NotFound> */}
+      <Switch>
+        <Route exact path="/">
+          <Header />
+          <Main />
+          <Footer />
+        </Route>
+        <Route path="/movies">
+          <Header />
+          <SearchForm />
+          <MoviesCardList />
+          <Footer />
+        </Route>
+        <Route path="/saved-movies">
+          <Header />
+          <SearchForm />
+          <MoviesCardList />
+          <Footer />
+        </Route>
+        <Route path="/profile">
+          <Header />
+          <Profile />
+        </Route>
+        <Route path="/signin">
+          <Login />
+        </Route>
+        <Route path="/signup">
+          <Register />
+        </Route>
+        <Route path="*">
+        <NotFound />
+        </Route>
+      </Switch>
     </>
   );
 }
