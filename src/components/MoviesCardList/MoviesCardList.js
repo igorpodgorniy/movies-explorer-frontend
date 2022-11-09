@@ -1,170 +1,58 @@
 import './MoviesCardList.css';
-import photo from '../../images/film-frame.png';
+import MoviesCard from '../MoviesCard/MoviesCard';
 
 function MoviesCardList() {
   return (
     <>
       <ul className="films">
         <li>
-          <article className="film">
-            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
-            <div className="film__info">
-              <h2 className="film__name">33 слова о дизайне</h2>
-              <p className="film__duration">1ч42м</p>
-              <button className="film__favorite" type="button" aria-label="Сохранить фильм"></button>
-            </div>
-          </article>
+          <MoviesCard favorite={true}/>
         </li>
         <li>
-          <article className="film">
-            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
-            <div className="film__info">
-              <h2 className="film__name">33 слова о дизайне</h2>
-              <p className="film__duration">1ч42м</p>
-              <button className="film__favorite film__favorite_active" type="button" aria-label="Сохранить фильм"></button>
-            </div>
-          </article>
+          <MoviesCard />
         </li>
         <li>
-          <article className="film">
-            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
-            <div className="film__info">
-              <h2 className="film__name">33 слова о дизайне</h2>
-              <p className="film__duration">1ч42м</p>
-              <button className="film__favorite" type="button" aria-label="Сохранить фильм"></button>
-            </div>
-          </article>
+          <MoviesCard favorite={true}/>
         </li>
         <li>
-          <article className="film">
-            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
-            <div className="film__info">
-              <h2 className="film__name">33 слова о дизайне</h2>
-              <p className="film__duration">1ч42м</p>
-              <button className="film__favorite film__favorite_active" type="button" aria-label="Сохранить фильм"></button>
-            </div>
-          </article>
+          <MoviesCard />
         </li>
         <li>
-          <article className="film">
-            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
-            <div className="film__info">
-              <h2 className="film__name">33 слова о дизайне</h2>
-              <p className="film__duration">1ч42м</p>
-              <button className="film__favorite" type="button" aria-label="Сохранить фильм"></button>
-            </div>
-          </article>
-        </li>
-        {/* <li>
-          <article className="film">
-            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
-            <div className="film__info">
-              <h2 className="film__name">33 слова о дизайне</h2>
-              <p className="film__duration">1ч42м</p>
-              <button className="film__favorite film__favorite_active" type="button" aria-label="Сохранить фильм"></button>
-            </div>
-          </article>
-        </li> */}
-        {/* <li>
-          <article className="film">
-            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
-            <div className="film__info">
-              <h2 className="film__name">33 слова о дизайне</h2>
-              <p className="film__duration">1ч42м</p>
-              <button className="film__favorite" type="button" aria-label="Сохранить фильм"></button>
-            </div>
-          </article>
+          <MoviesCard />
         </li>
         <li>
-          <article className="film">
-            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
-            <div className="film__info">
-              <h2 className="film__name">33 слова о дизайне</h2>
-              <p className="film__duration">1ч42м</p>
-              <button className="film__favorite film__favorite_active" type="button" aria-label="Сохранить фильм"></button>
-            </div>
-          </article>
-        </li> */}
-        {/* <li>
-          <article className="film">
-            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
-            <div className="film__info">
-              <h2 className="film__name">33 слова о дизайне</h2>
-              <p className="film__duration">1ч42м</p>
-              <button className="film__favorite" type="button" aria-label="Сохранить фильм"></button>
-            </div>
-          </article>
+          <MoviesCard />
         </li>
         <li>
-          <article className="film">
-            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
-            <div className="film__info">
-              <h2 className="film__name">33 слова о дизайне</h2>
-              <p className="film__duration">1ч42м</p>
-              <button className="film__favorite film__favorite_active" type="button" aria-label="Сохранить фильм"></button>
-            </div>
-          </article>
+          <MoviesCard favorite={true}/>
         </li>
         <li>
-          <article className="film">
-            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
-            <div className="film__info">
-              <h2 className="film__name">33 слова о дизайне</h2>
-              <p className="film__duration">1ч42м</p>
-              <button className="film__favorite" type="button" aria-label="Сохранить фильм"></button>
-            </div>
-          </article>
+          <MoviesCard />
         </li>
         <li>
-          <article className="film">
-            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
-            <div className="film__info">
-              <h2 className="film__name">33 слова о дизайне</h2>
-              <p className="film__duration">1ч42м</p>
-              <button className="film__favorite film__favorite_active" type="button" aria-label="Сохранить фильм"></button>
-            </div>
-          </article>
+          <MoviesCard />
         </li>
         <li>
-          <article className="film">
-            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
-            <div className="film__info">
-              <h2 className="film__name">33 слова о дизайне</h2>
-              <p className="film__duration">1ч42м</p>
-              <button className="film__favorite film__favorite_active" type="button" aria-label="Сохранить фильм"></button>
-            </div>
-          </article>
+          <MoviesCard />
         </li>
         <li>
-          <article className="film">
-            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
-            <div className="film__info">
-              <h2 className="film__name">33 слова о дизайне</h2>
-              <p className="film__duration">1ч42м</p>
-              <button className="film__favorite" type="button" aria-label="Сохранить фильм"></button>
-            </div>
-          </article>
+          <MoviesCard favorite={true}/>
         </li>
         <li>
-          <article className="film">
-            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
-            <div className="film__info">
-              <h2 className="film__name">33 слова о дизайне</h2>
-              <p className="film__duration">1ч42м</p>
-              <button className="film__favorite film__favorite_active" type="button" aria-label="Сохранить фильм"></button>
-            </div>
-          </article>
+          <MoviesCard />
         </li>
         <li>
-          <article className="film">
-            <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
-            <div className="film__info">
-              <h2 className="film__name">33 слова о дизайне</h2>
-              <p className="film__duration">1ч42м</p>
-              <button className="film__favorite film__favorite_active" type="button" aria-label="Сохранить фильм"></button>
-            </div>
-          </article>
-        </li> */}
+          <MoviesCard />
+        </li>
+        <li>
+          <MoviesCard />
+        </li>
+        <li>
+          <MoviesCard />
+        </li>
+        <li>
+          <MoviesCard favorite={true}/>
+        </li>
       </ul>
       <section className="more">
         <button className="more__button" type="button" aria-label="Подгрузить ещё фильмы">Ещё</button>

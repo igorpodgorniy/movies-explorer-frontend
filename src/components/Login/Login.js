@@ -4,9 +4,6 @@ import { NavLink } from 'react-router-dom';
 function Login() {
   return (
     <>
-      <header className="header header_type_sign">
-        <a href="#" className="header__logo"></a>
-      </header>
       <form id="registration" className="sign__form">
         <fieldset className="sign__fieldset">
           <legend className="sign__title">Рады видеть!</legend>

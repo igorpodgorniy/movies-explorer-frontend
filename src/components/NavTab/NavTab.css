@@ -1,0 +1,53 @@
+.nav-tab__buttons {
+  list-style: none;
+  padding-left: 0;
+  padding-bottom: 30px;
+  margin: 0 auto;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.nav-tab__button {
+  background-color: #E8E8E8;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding-top: 10px;
+  border: 0;
+  width: 96px;
+  height: 36px;
+  color: #FFFFFF;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: box-shadow .3s;
+}
+
+.nav-tab__button:hover {
+  box-shadow: 0px 2px 8px -2px rgba(0, 0, 0, 0.2);
+  transition: box-shadow .3s;
+}
+
+.nav-tab__button:active {
+  box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 600px) {
+  .nav-tab__buttons {
+    gap: 6px;
+    padding-bottom: 17px;
+  }
+
+  .nav-tab__button {
+    width: 82px;
+    height: 26px;
+    font-size: 10px;
+    line-height: 1.6;
+    padding-top: 5px;
+    border-radius: 6px;
+  }
+}
