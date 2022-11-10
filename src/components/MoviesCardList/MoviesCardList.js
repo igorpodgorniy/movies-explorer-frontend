@@ -1,7 +1,9 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
+import { useHistory } from 'react-router-dom';
 
 function MoviesCardList() {
+  const history = useHistory();
   return (
     <>
       <ul className="films">
@@ -54,9 +56,11 @@ function MoviesCardList() {
           <MoviesCard favorite={true}/>
         </li>
       </ul>
-      <section className="more">
-        <button className="more__button" type="button" aria-label="Подгрузить ещё фильмы">Ещё</button>
-      </section>
+      {history.location.pathname !== '/saved-movies' &&
+        <section className="more">
+          <button className="more__button" type="button" aria-label="Подгрузить ещё фильмы">Ещё</button>
+        </section>
+      }
     </>
   );
 }
