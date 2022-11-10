@@ -14,6 +14,7 @@ function Login() {
             type="email"
             value="pochta@yandex.ru"
             placeholder="Введите email"
+            required
           />
           <label className="sign__label" for="password">Пароль</label>
           <input
@@ -21,6 +22,7 @@ function Login() {
             name="password"
             type="password"
             placeholder="Введите пароль"
+            required
           />
           <button type="submit" className="sign__button">Войти</button>
         </fieldset>

@@ -13,6 +13,7 @@ function Profile() {
             type="text"
             value="Виталий"
             placeholder="Введите имя"
+            required
           />
         </label>
         <label className="profile__label">
@@ -23,6 +24,7 @@ function Profile() {
             type="email"
             value="pochta@yandex.ru"
             placeholder="Введите email"
+            required
           />
         </label>
         <button className="profile__button" type="button">Редактировать</button>

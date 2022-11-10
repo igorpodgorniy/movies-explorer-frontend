@@ -14,6 +14,7 @@ function Register() {
             type="text"
             value="Виталий"
             placeholder="Введите имя"
+            required
           />
           <label className="sign__label" for="email">E-mail</label>
           <input
@@ -22,6 +23,7 @@ function Register() {
             type="email"
             value="pochta@yandex.ru"
             placeholder="Введите email"
+            required
           />
           <label className="sign__label" for="password">Пароль</label>
           <input
@@ -30,6 +32,7 @@ function Register() {
             type="password"
             value="••••••••••••••"
             placeholder="Введите пароль"
+            required
           />
           <span className="sign__error">Что-то пошло не так...</span>
           <button type="submit" className="sign__button">Зарегистрироваться</button>
