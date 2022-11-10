@@ -43,43 +43,6 @@ html {
   transition: box-shadow .3s;
 }
 
-.header__button {
-  width: 100px;
-  height: 32px;
-  font-family: 'Inter', 'Arial', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.14;
-  color: #000000;
-  background-color: #FFFFFF;
-  border: 2px solid rgba(170, 170, 170, 0.2);
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  transition: box-shadow .3s;;
-  margin-left: auto;
-}
-
-.header__button:hover {
-  box-shadow: 0px 2px 8px -2px rgb(0 0 0 / 20%);
-  transition: box-shadow .3s;
-}
-
-.header__button:active {
-  box-shadow: 0px 1px 5px -2px rgb(0 0 0 / 20%);
-}
-
-.header__button-icon {
-  background-image: url(../../images/icon-user.svg);
-  background-repeat: no-repeat;
-  width: 12px;
-  height: 14px;
-  display: inline-block;
-  margin-left: 4px;
-  margin-right: 7px;
-}
-
 .header__link {
   text-decoration: none;
   font-family: 'Inter', 'Arial', sans-serif;
@@ -132,80 +95,10 @@ html {
   display: flex;
 }
 
-.nav {
-  display: flex;
-  align-items: center;
-  margin-left: 44px;
-}
-
-.nav__list {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav__item {
-  padding-right: 17px;
-}
-
-.nav__item:last-child {
-  padding-right: 0;
-}
-
-.nav__link {
-  text-decoration: none;
-  font-family: 'Inter', 'Arial', sans-serif;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 1.38;
-  color: #000000;
-  opacity: 1;
-  transition: opacity .3s;
-}
-
-.nav__link:hover {
-  opacity: .7;
-  transition: opacity .3s;
-}
-
-.nav__link:active {
-  opacity: .3;
-  transition: opacity .3s;
-}
-
-.nav__link_active {
-  font-weight: 500;
-}
-
 @media screen and (max-width: 768px) {
   .header_type_all {
     padding-right: 30px;
     padding-left: 30px;
-  }
-
-  .header__button {
-    display: none;
-  }
-
-  .nav {
-    display: none;
-  }
-
-  .header__hamburger {
-    cursor: pointer;
-    margin-left: auto;
-    margin-right: 9px;
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-  }
-
-  .header__nav-bar {
-    width: 28px;
-    height: 3px;
-    background-color: #000000;
   }
 }
 
@@ -226,15 +119,5 @@ html {
     padding-right: 12px;
     padding-bottom: 7px;
     padding-left: 12px;
-  }
-
-  .header__hamburger {
-    gap: 6.5px;
-    margin-top: 1px;
-  }
-
-  .header__nav-bar {
-    width: 22px;
-    height: 2.5px;
   }
 }
