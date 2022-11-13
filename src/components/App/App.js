@@ -21,12 +21,16 @@ function App() {
         </Route>
         <Route path="/movies">
           <Header isLogin={true} additionalСlass='header_type_all' />
-          <Movies />
+          <main>
+            <Movies />
+          </main>
           <Footer />
         </Route>
         <Route path="/saved-movies">
           <Header isLogin={true} additionalСlass='header_type_all'/>
-          <SavedMovies />
+          <main>
+            <SavedMovies />
+          </main>
           <Footer />
         </Route>
         <Route path="/profile">

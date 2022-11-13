@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 function Register() {
   return (
-    <>
+    <main>
       <form id="registration" className="sign__form">
         <fieldset className="sign__fieldset">
           <legend className="sign__title">Добро пожаловать!</legend>
@@ -39,7 +39,7 @@ function Register() {
         </fieldset>
         <p className="sign__text">Уже зарегистрированы?<NavLink to="/signin" className="sign__link">Войти</NavLink></p>
       </form>
-    </>
+    </main>
   );
 }
 

@@ -44,7 +44,6 @@
 .search-bar__input:focus-visible {
   border: 0;
   background-color: #FDFDFD;
-  outline: 0;
 }
 
 .search-bar__input::-webkit-input-placeholder {
