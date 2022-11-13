@@ -1,0 +1,123 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.header {
+  max-width: 1280px;
+  background-color: #FFFFFF;
+  margin: 0 auto;
+  padding-top: 18px;
+  padding-right: 70px;
+  padding-bottom: 18px;
+  padding-left: 70px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.header_type_sign {
+  max-width: 396px;
+  padding-top: 70px;
+  padding-right: 0;
+  padding-bottom: 40px;
+  padding-left: 0;
+}
+
+.header__logo {
+  background-image: url(../../images/logo.svg);
+  width: 38px;
+  height: 38px;
+  opacity: 1;
+  display: inline-block;
+  border-radius: 6px;
+  transition: opacity .3s;
+}
+
+.header__logo:hover {
+  box-shadow: 0px 10px 16px 0 rgb(0 0 0 / 20%);
+  transition: box-shadow .3s;
+}
+
+.header__logo:active {
+  box-shadow: 0px 4px 5px 0 rgb(0 0 0 / 20%);
+  transition: box-shadow .3s;
+}
+
+.header__link {
+  text-decoration: none;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #000000;
+  opacity: 1;
+  transition: opacity .3s;
+}
+
+.header__link:hover {
+  opacity: .7;
+  transition: opacity .3s;
+}
+
+.header__link:active {
+  opacity: .3;
+  transition: opacity .3s;
+}
+
+.header__link_dark {
+  color: #FFFFFF;
+  background-color: #000000;
+  border-radius: 3px;
+  margin-left: 30px;
+  padding-top: 8px;
+  padding-right: 20px;
+  padding-bottom: 8px;
+  padding-left: 20px;
+}
+
+.header__link_dark:hover {
+  opacity: 1;
+  box-shadow: 0px 10px 16px 0 rgb(0 0 0 / 20%);
+  transition: box-shadow .3s;
+}
+
+.header__link_dark:active {
+  opacity: 1;
+  box-shadow: 0px 4px 5px 0 rgb(0 0 0 / 20%);
+}
+
+.header__user-nav {
+  list-style: none;
+  padding-left: 0;
+  margin-left: auto;
+  margin-top: 0;
+  margin-bottom: 1px;
+  display: flex;
+}
+
+@media screen and (max-width: 768px) {
+  .header_type_all {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header_type_all {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .header__link {
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .header__link_dark {
+    margin-left: 14px;
+    padding-top: 7px;
+    padding-right: 12px;
+    padding-bottom: 7px;
+    padding-left: 12px;
+  }
+}

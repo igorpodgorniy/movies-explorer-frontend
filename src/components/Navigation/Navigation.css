@@ -1,0 +1,243 @@
+.nav {
+  display: flex;
+  align-items: center;
+  margin-left: 44px;
+}
+
+.nav_without-profile {
+  width: 93%;
+}
+
+.nav__container {
+  display: contents;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__item {
+  padding-right: 17px;
+}
+
+.nav__item:last-child {
+  padding-right: 0;
+}
+
+.nav__item_hidden {
+  display: none;
+}
+
+.nav__link {
+  text-decoration: none;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.38;
+  color: #000000;
+  opacity: 1;
+  transition: opacity .3s;
+}
+
+.nav__link:hover {
+  opacity: .7;
+  transition: opacity .3s;
+}
+
+.nav__link:active {
+  opacity: .3;
+  transition: opacity .3s;
+}
+
+.nav__link_active {
+  font-weight: 500;
+}
+
+.nav__button {
+  width: 100px;
+  height: 32px;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  color: #000000;
+  background-color: #FFFFFF;
+  border: 2px solid rgba(170, 170, 170, 0.2);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: box-shadow .3s;;
+  margin-left: auto;
+}
+
+.nav__button:hover {
+  box-shadow: 0px 2px 8px -2px rgb(0 0 0 / 20%);
+  transition: box-shadow .3s;
+}
+
+.nav__button:active {
+  box-shadow: 0px 1px 5px -2px rgb(0 0 0 / 20%);
+}
+
+.nav__button-icon {
+  background-image: url(../../images/icon-user.svg);
+  background-repeat: no-repeat;
+  width: 12px;
+  height: 14px;
+  display: inline-block;
+  margin-left: 4px;
+  margin-right: 7px;
+}
+
+.nav__hamburger-ticker {
+  display: none;
+}
+
+.nav__hamburger-ticker:checked ~ .nav__container .nav {
+  right: 0px;
+}
+
+.nav__hamburger-ticker:checked ~ .nav__container {
+  right: 0px;
+}
+
+.nav__hamburger-ticker:checked ~ .nav__hamburger .nav__nav-bar_position_top {
+  transform: rotate(45deg);
+  top: 11px;
+  right: -18px;
+  width: 22px;
+}
+
+.nav__hamburger-ticker:checked ~ .nav__hamburger .nav__nav-bar_position_middle {
+  opacity: 0;
+}
+
+.nav__hamburger-ticker:checked ~ .nav__hamburger .nav__nav-bar_position_bottom {
+  transform: rotate(-45deg);
+  top: -9px;
+  right: -18px;
+  width: 22px;
+}
+
+@media screen and (max-width: 930px) {
+  .nav_without-profile {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav__container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    right: 100%;
+    display: flex;
+    transition: right .2s;
+    z-index: 1;
+    backface-visibility: hidden;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    padding-top: 160px;
+    margin: 0;
+    box-sizing: border-box;
+    width: 520px;
+    background-color: #FFFFFF;
+    height: 100%;
+    top: 0;
+    right: -520px;
+    transition: right .2s;
+    opacity: 1;
+    z-index: 10;
+    backface-visibility: hidden;
+  }
+
+  .nav__list {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .nav__item {
+    padding-right: 0;
+  }
+
+  .nav__item_hidden {
+    display: inline-block;
+  }
+
+  .nav__link {
+    font-size: 18px;
+    line-height: 1.22;
+    font-weight: 500;
+  }
+
+  .nav__link_active {
+    padding-bottom: 4px;
+    border-bottom: 2px solid #000000;
+  }
+
+  .nav__button {
+    margin-top: auto;
+    margin-left: 0;
+    margin-bottom: 90px;
+    padding-right: 11px;
+    justify-content: center;
+  }
+
+  .nav__hamburger {
+    width: 28px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: 9px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    transition: right .23s;
+    z-index: 20;
+    backface-visibility: hidden;
+  }
+
+  .nav__nav-bar {
+    height: 3px;
+    background-color: #000000;
+    display: block;
+    transition: all .1s ease-in .23s;
+    position: relative;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .nav {
+    width: 320px;
+  }
+
+  .nav__button {
+    margin-bottom: 46px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .nav__hamburger {
+    gap: 6.5px;
+    margin-top: 1px;
+  }
+
+  .nav__nav-bar {
+    width: 22px;
+    height: 2.5px;
+  }
+
+  .nav__hamburger-ticker:checked ~ .nav__hamburger .nav__nav-bar_position_bottom {
+    top: -7px;
+  }
+}
