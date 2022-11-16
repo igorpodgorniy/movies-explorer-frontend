@@ -3,7 +3,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 
 function Navigation(props) {
   const history = useHistory();
-  const { isLogin } = props;
+  const { loggedIn } = props;
   const navClassName = `nav ${history.location.pathname !== '/' ? 'nav_without-profile' : ''}`;
   return (
     <>
@@ -17,7 +17,7 @@ function Navigation(props) {
           </label>
         </>
       }
-      {(isLogin || history.location.pathname === '/') &&
+      {loggedIn &&
         <div className="nav__container">
           <nav className={navClassName}>
             <ul className="nav__list">
