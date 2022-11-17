@@ -80,6 +80,14 @@
   transition: text-shadow .2s;
 }
 
+.profile__button:disabled {
+  opacity: .8;
+}
+
+.profile__button:disabled:hover {
+  text-shadow: none;
+}
+
 .profile__button_color_red {
   color: #FF4062;
 }
