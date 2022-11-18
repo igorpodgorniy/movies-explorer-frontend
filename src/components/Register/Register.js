@@ -1,41 +1,104 @@
 import './Register.css';
 import { NavLink } from 'react-router-dom';
+import useForm from '../../hooks/useForm';
+import useValidation from '../../hooks/useValidation';
 
-function Register() {
+function Register({ onRegister, isLoading }) {
+  const {values, handleChange} = useForm({name: '', email: '', password: ''});
+  const nameValid = useValidation(true);
+  const emailValid = useValidation(true);
+  const passwordValid = useValidation(true);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (!values.email || !values.password || !nameValid){
+      return;
+    }
+
+    onRegister(values.name, values.email, values.password);
+  }
+
   return (
     <main>
-      <form id="registration" className="sign__form">
+      <form
+        id="registration"
+        className="sign__form"
+        onSubmit={handleSubmit}
+        noValidate>
         <fieldset className="sign__fieldset">
           <legend className="sign__title">Добро пожаловать!</legend>
           <label className="sign__label" for="name">Имя</label>
-          <input
-            className="sign__input"
-            name="name"
-            type="text"
-            value="Виталий"
-            placeholder="Введите имя"
-            required
-          />
+          <div className='sign__input-container'>
+            <input
+              className="sign__input"
+              name="name"
+              type="text"
+              minLength="2"
+              value={values.name}
+              onChange={(e) => {
+                handleChange(e);
+                nameValid.validation(e);
+              }}
+              placeholder="Введите имя"
+              required
+            />
+            <span className="sign__error">
+              {nameValid.isWrong && nameValid.errorMessage}
+            </span>
+          </div>
           <label className="sign__label" for="email">E-mail</label>
-          <input
-            className="sign__input"
-            name="email"
-            type="email"
-            value="pochta@yandex.ru"
-            placeholder="Введите email"
-            required
-          />
+          <div className='sign__input-container'>
+            <input
+              className="sign__input"
+              name="email"
+              type="email"
+              minLength="6"
+              value={values.email}
+              onChange={(e) => {
+                handleChange(e);
+                emailValid.validation(e);
+              }}
+              placeholder="Введите email"
+              required
+            />
+            <span className="sign__error">
+              {emailValid.isWrong && emailValid.errorMessage}
+            </span>
+          </div>
           <label className="sign__label" for="password">Пароль</label>
-          <input
-            className="sign__input sign__input_error"
-            name="password"
-            type="password"
-            value="••••••••••••••"
-            placeholder="Введите пароль"
-            required
-          />
+          <div className='sign__input-container'>
+            <input
+              className="sign__input"
+              name="password"
+              type="password"
+              minLength="3"
+              value={values.password}
+              onChange={(e) => {
+                handleChange(e);
+                passwordValid.validation(e);
+              }}
+              placeholder="Введите пароль"
+              required
+            />
+            <span className="sign__error">
+              {passwordValid.isWrong && passwordValid.errorMessage}
+            </span>
+          </div>
           <span className="sign__error">Что-то пошло не так...</span>
-          <button type="submit" className="sign__button">Зарегистрироваться</button>
+          <button
+            type="submit"
+            className="sign__button"
+            disabled={
+              nameValid.isWrong
+              || emailValid.isWrong
+              || passwordValid.isWrong
+              || values.name === ""
+              || values.email === ""
+              || values.password === ""
+            }>
+              Зарегистрироваться
+            </button>
         </fieldset>
         <p className="sign__text">Уже зарегистрированы?<NavLink to="/signin" className="sign__link">Войти</NavLink></p>
       </form>

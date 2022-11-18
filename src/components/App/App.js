@@ -66,8 +66,30 @@ function App() {
           localStorage.setItem('isLogin', true);
           handleLogin();
           closeAllPopups();
-          history.push('./');
+          history.push('/');
         }, 1000);
+      })
+      .catch((err) => {
+        setRequestDone(false);
+        console.log(err);
+      })
+      .finally(() => {
+        setRequestDonePopupOpen(true);
+      });
+  }
+
+  function handleRegisterSubmit(name, email, password) {
+    auth.register(name, email, password)
+      .then((res) => {
+        if (res.data) {
+          setTextSuccess('Вы успешно зарегистрировались!');
+          setRequestDone(true);
+          setTimeout(() => {
+            localStorage.setItem('isLogin', true);
+            setRequestDonePopupOpen(false);
+            history.push('/');
+          }, 1000);
+        }
       })
       .catch((err) => {
         setRequestDone(false);
@@ -138,7 +160,7 @@ function App() {
         </Route>
         <Route path="/signup">
           <Header loggedIn={false} additionalСlass='header_type_sign'/>
-          <Register isLoading={isLoading}/>
+          <Register onRegister={handleRegisterSubmit} isLoading={isLoading}/>
         </Route>
         <Route path="*">
           <NotFound />

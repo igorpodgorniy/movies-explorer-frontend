@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
 import useValidation from '../../hooks/useValidation';
 
-function Login({onLogin}) {
+function Login({ onLogin, isLoading }) {
   const {values, handleChange} = useForm({email: '', password: ''});
   const emailValid = useValidation(true);
   const passwordValid = useValidation(true);
