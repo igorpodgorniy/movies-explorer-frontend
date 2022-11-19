@@ -12,12 +12,13 @@ import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { auth, api } from '../../utils/MainApi';
 
 function App() {
   const history = useHistory();
 
-  const [loggedIn, setLoggedIn] = React.useState(true); // TODO заменить на false
+  const [loggedIn, setLoggedIn] = React.useState(localStorage.getItem('isLogin') || false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [isRequestDonePopupOpen, setRequestDonePopupOpen] = React.useState(false);
   const [isRequestDone, setRequestDone] = React.useState(true);
@@ -25,49 +26,50 @@ function App() {
   const [textSuccess, setTextSuccess] = React.useState('');
 
   React.useEffect(() => {
-    if (tokenCheck()) {
-      history.push(history.location.pathname);
-    } else {
-      signOut();
-    }
+    api.getUserInfo()
+      .then((userInfo) => {
+        if (userInfo) {
+          setLoggedIn(true);
+          setCurrentUser(userInfo);
+        }
+      })
+      .catch(err => {
+        signOut();
+        console.log(err);
+      });
   }, []);
-
-  function tokenCheck() {
-    let isLogin = false;
-    if (localStorage.getItem('isLogin')) {
-      isLogin = localStorage.getItem('isLogin');
-      setLoggedIn(true);
-    }
-    return isLogin;
-  }
 
   function signOut() {
     auth.logout()
       .then(() => {
         setLoggedIn(false);
+        setCurrentUser({name: '', email: ''});
         localStorage.removeItem('isLogin');
-        history.push('./signin');
+        history.push('/');
       })
       .catch(err => {
         console.log(err);
       });
   }
 
-  function handleLogin() {
-    setLoggedIn(true);
+  function handleLogin(data, textSuccess) {
+    setTextSuccess(textSuccess);
+    setRequestDone(true);
+    localStorage.setItem('isLogin', true);
+    setTimeout(() => {
+      setLoggedIn(true);
+      setCurrentUser(data);
+      setRequestDonePopupOpen(false);
+      history.push('/movies');
+    }, 1000);
   }
 
   function handleLoginSubmit(email, password) {
     auth.authorize(email, password)
-      .then(() => {
-        setTextSuccess('Вы успешно вошли!');
-        setRequestDone(true);
-        setTimeout(() => {
-          localStorage.setItem('isLogin', true);
-          handleLogin();
-          closeAllPopups();
-          history.push('/');
-        }, 1000);
+      .then((res) => {
+        if (res.data) {
+          handleLogin(res.data, 'Вы успешно вошли!');
+        }
       })
       .catch((err) => {
         setRequestDone(false);
@@ -82,13 +84,7 @@ function App() {
     auth.register(name, email, password)
       .then((res) => {
         if (res.data) {
-          setTextSuccess('Вы успешно зарегистрировались!');
-          setRequestDone(true);
-          setTimeout(() => {
-            localStorage.setItem('isLogin', true);
-            setRequestDonePopupOpen(false);
-            history.push('/');
-          }, 1000);
+          handleLogin(res.data, 'Вы успешно зарегистрировались!');
         }
       })
       .catch((err) => {
@@ -104,7 +100,7 @@ function App() {
     setIsLoading(true);
     api.editProfile(newData)
       .then((data) => {
-        setCurrentUser({...data});
+        setCurrentUser(data);
         closeAllPopups();
       })
       .catch(err => {
@@ -120,10 +116,10 @@ function App() {
   }
 
   return (
-    <>
+    <CurrentUserContext.Provider value={currentUser}>
       <Switch>
         <Route exact path="/">
-          <Header loggedIn={false} additionalСlass='header_type_all' />
+          <Header loggedIn={loggedIn} additionalСlass='header_type_all' />
           <Main />
           <Footer />
         </Route>
@@ -146,7 +142,6 @@ function App() {
         <ProtectedRoute
           path='/profile'
           loggedIn={loggedIn}
-          dataUser={currentUser}
           onLogOut={signOut}
           isLoading={isLoading}
           onUpdateUser={handleUpdateUser}
@@ -173,7 +168,7 @@ function App() {
         textSuccess={textSuccess}
         ariaLabel="Закрыть окно с результатом"
       />
-    </>
+    </CurrentUserContext.Provider>
   );
 }
 

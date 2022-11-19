@@ -28,7 +28,7 @@ function Register({ onRegister, isLoading }) {
         noValidate>
         <fieldset className="sign__fieldset">
           <legend className="sign__title">Добро пожаловать!</legend>
-          <label className="sign__label" for="name">Имя</label>
+          <label className="sign__label" htmlFor="name">Имя</label>
           <div className='sign__input-container'>
             <input
               className="sign__input"
@@ -47,7 +47,7 @@ function Register({ onRegister, isLoading }) {
               {nameValid.isWrong && nameValid.errorMessage}
             </span>
           </div>
-          <label className="sign__label" for="email">E-mail</label>
+          <label className="sign__label" htmlFor="email">E-mail</label>
           <div className='sign__input-container'>
             <input
               className="sign__input"
@@ -66,7 +66,7 @@ function Register({ onRegister, isLoading }) {
               {emailValid.isWrong && emailValid.errorMessage}
             </span>
           </div>
-          <label className="sign__label" for="password">Пароль</label>
+          <label className="sign__label" htmlFor="password">Пароль</label>
           <div className='sign__input-container'>
             <input
               className="sign__input"
@@ -85,7 +85,6 @@ function Register({ onRegister, isLoading }) {
               {passwordValid.isWrong && passwordValid.errorMessage}
             </span>
           </div>
-          <span className="sign__error">Что-то пошло не так...</span>
           <button
             type="submit"
             className="sign__button"

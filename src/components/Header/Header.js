@@ -11,7 +11,7 @@ function Header(props) {
     <header className={headerClassName}>
       <NavLink to='/' className="header__logo"></NavLink>
       <Navigation loggedIn={loggedIn}/>
-      {history.location.pathname === '/' &&
+      {history.location.pathname === '/' && !loggedIn &&
         <ul className="header__user-nav">
           <li><NavLink to="/signup" className="header__link">Регистрация</NavLink></li>
           <li><NavLink to="/signin" className="header__link header__link_dark">Войти</NavLink></li>

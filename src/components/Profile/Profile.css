@@ -82,6 +82,7 @@
 
 .profile__button:disabled {
   opacity: .8;
+  cursor: not-allowed;
 }
 
 .profile__button:disabled:hover {

@@ -1,11 +1,13 @@
 import './Profile.css';
+import React from 'react';
 import useForm from '../../hooks/useForm';
 import useValidation from '../../hooks/useValidation';
+import { CurrentUserContext} from '../../contexts/CurrentUserContext';
 
 function Profile(props) {
-  const { dataUser, onLogOut, handleUpdateUser } = props;
-
-  const {values, handleChange} = useForm(dataUser);
+  const { onLogOut, onUpdateUser } = props;
+  const currentUser = React.useContext(CurrentUserContext);
+  const {values, handleChange} = useForm(currentUser);
   const emailValid = useValidation(true);
   const nameValid = useValidation(true);
 
@@ -16,7 +18,7 @@ function Profile(props) {
       return;
     }
 
-    handleUpdateUser(values);
+    onUpdateUser({ name: values.name, email: values.email });
   }
 
   return (
@@ -35,7 +37,7 @@ function Profile(props) {
             name="name"
             type="text"
             minLength="2"
-            value={values.name}
+            value={values.name || ''}
             onChange={(e) => {
               handleChange(e);
               nameValid.validation(e);
@@ -51,7 +53,7 @@ function Profile(props) {
             name="email"
             type="email"
             minLength="6"
-            value={values.email}
+            value={values.email || ''}
             onChange={(e) => {
               handleChange(e);
               emailValid.validation(e);
@@ -62,7 +64,7 @@ function Profile(props) {
         </label>
         <button
           className="profile__button"
-          type="button"
+          type="submit"
           disabled={
             emailValid.isWrong
             || nameValid.isWrong

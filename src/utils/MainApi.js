@@ -39,7 +39,29 @@ export const auth = {
     .then(_checkResponse);
   },
 };
-export const api = {};
+export const api = {
+  getUserInfo: async () => {
+    return fetch(`${BASE_URL}/users/me`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+    })
+    .then(_checkResponse);
+  },
+  editProfile(newData) {
+    return fetch(`${BASE_URL}/users/me`, {
+      method: 'PATCH',
+      headers: {
+       'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify(newData),
+     })
+     .then(_checkResponse);
+   },
+};
 
 function _checkResponse(res) {
   if (res.ok) {
