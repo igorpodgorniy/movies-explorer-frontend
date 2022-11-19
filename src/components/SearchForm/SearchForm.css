@@ -163,6 +163,7 @@
 @media screen and (max-width: 768px) {
   .search-bar__input {
     width: 46%;
+    height: 100%;
   }
 
   .search-bar {
@@ -202,7 +203,7 @@
     margin-right: auto;
     font-size: 14px;
     line-height: 1.43;
-    width: 60%;
+    width: 65%;
   }
 
   .search-bar__button {

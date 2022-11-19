@@ -3,7 +3,15 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 
-function Movies({ onSearch, searchErrorText, setSearchErrorText, isLoading, moviesList }) {
+function Movies(props) {
+  const {
+    onSearch,
+    searchErrorText,
+    setSearchErrorText,
+    isLoading,
+    moviesList,
+    searchText,
+  } = props;
   return (
     <>
       <SearchForm
@@ -12,7 +20,7 @@ function Movies({ onSearch, searchErrorText, setSearchErrorText, isLoading, movi
         setSearchErrorText={setSearchErrorText}
       />
       {isLoading && <Preloader />}
-      <MoviesCardList moviesList={moviesList} />
+      <MoviesCardList moviesList={moviesList} searchText={searchText} />
     </>
   );
 }

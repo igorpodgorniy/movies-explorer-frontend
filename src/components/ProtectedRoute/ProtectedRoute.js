@@ -14,7 +14,7 @@ function ProtectedRoute({
         loggedIn
           ? <>
               <HeaderComponent loggedIn={loggedIn} additionalСlass={additionalСlass} />
-              <main>
+              <main className="main-page">
                 <MainComponent {...props} />
               </main>
               {FooterComponent && <FooterComponent />}

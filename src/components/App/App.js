@@ -26,6 +26,7 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [textSuccess, setTextSuccess] = React.useState('');
   const [searchErrorText, setSearchErrorText] = React.useState('');
+  const [searchText, setSearchText] = React.useState('');
   const [moviesList, setMoviesList] = React.useState([]);
 
   React.useEffect(() => {
@@ -117,10 +118,23 @@ function App() {
   function handleSearch(values) {
     setIsLoading(true);
     setSearchErrorText('');
+    setSearchText('');
     setMoviesList([]);
     loadMovies()
       .then((movies) => {
-        setMoviesList(movies);
+        const searchMovies = movies.filter((movie) => {
+          return movie.nameRU
+            .toLowerCase()
+            .indexOf(values.search.toLowerCase()) > -1
+            && (values.checkbox ? movie.duration <= 40 : movie.duration);
+        });
+        localStorage.setItem('searchText', values.search);
+        localStorage.setItem('shortFilms', values.checkbox);
+        localStorage.setItem('movies', JSON.stringify(searchMovies));
+        setMoviesList(searchMovies);
+        if (searchMovies.length === 0) {
+          setSearchText('Ничего не найдено');
+        }
       })
       .catch(err => {
         console.log(err);
@@ -148,6 +162,7 @@ function App() {
           onSearch={handleSearch}
           searchErrorText={searchErrorText}
           setSearchErrorText={setSearchErrorText}
+          searchText={searchText}
           moviesList={moviesList}
           isLoading={isLoading}
           mainComponent={Movies}
