@@ -12,7 +12,7 @@ function Register({ onRegister, isLoading }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (!values.email || !values.password || !nameValid){
+    if (!values.email || !values.password || !nameValid) {
       return;
     }
 

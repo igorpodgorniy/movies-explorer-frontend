@@ -11,7 +11,7 @@ function Login({ onLogin, isLoading }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (!values.email || !values.password){
+    if (!values.email || !values.password) {
       return;
     }
 

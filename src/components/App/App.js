@@ -14,6 +14,7 @@ import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { auth, api } from '../../utils/MainApi';
+import { loadMovies } from '../../utils/MoviesApi';
 
 function App() {
   const history = useHistory();
@@ -24,6 +25,8 @@ function App() {
   const [isRequestDone, setRequestDone] = React.useState(true);
   const [isLoading, setIsLoading] = React.useState(false);
   const [textSuccess, setTextSuccess] = React.useState('');
+  const [searchErrorText, setSearchErrorText] = React.useState('');
+  const [moviesList, setMoviesList] = React.useState([]);
 
   React.useEffect(() => {
     api.getUserInfo()
@@ -111,6 +114,22 @@ function App() {
       });
   }
 
+  function handleSearch(values) {
+    setIsLoading(true);
+    setSearchErrorText('');
+    setMoviesList([]);
+    loadMovies()
+      .then((movies) => {
+        setMoviesList(movies);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }
+
   function closeAllPopups() {
     setRequestDonePopupOpen(false);
   }
@@ -126,6 +145,11 @@ function App() {
         <ProtectedRoute
           path='/movies'
           loggedIn={loggedIn}
+          onSearch={handleSearch}
+          searchErrorText={searchErrorText}
+          setSearchErrorText={setSearchErrorText}
+          moviesList={moviesList}
+          isLoading={isLoading}
           mainComponent={Movies}
           headerComponent={Header}
           footerComponent={Footer}

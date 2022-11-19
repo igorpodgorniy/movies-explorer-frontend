@@ -3,12 +3,16 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 
-function Movies() {
+function Movies({ onSearch, searchErrorText, setSearchErrorText, isLoading, moviesList }) {
   return (
     <>
-      <SearchForm />
-      <MoviesCardList />
-      <Preloader />
+      <SearchForm
+        onSearch={onSearch}
+        searchErrorText={searchErrorText}
+        setSearchErrorText={setSearchErrorText}
+      />
+      {isLoading && <Preloader />}
+      <MoviesCardList moviesList={moviesList} />
     </>
   );
 }

@@ -50,7 +50,7 @@ export const api = {
     })
     .then(_checkResponse);
   },
-  editProfile(newData) {
+  editProfile: async (newData) => {
     return fetch(`${BASE_URL}/users/me`, {
       method: 'PATCH',
       headers: {
