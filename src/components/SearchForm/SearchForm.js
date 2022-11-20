@@ -1,10 +1,27 @@
+import React from 'react';
 import './SearchForm.css';
 import useForm from '../../hooks/useForm';
-import useValidation from '../../hooks/useValidation';
 
-function SearchForm({ onSearch, searchErrorText, setSearchErrorText }) {
-  const {values, handleChange} = useForm({ search: '', checkbox: false });
-  const searchValid = useValidation(true);
+function SearchForm(props) {
+  const {
+    onSearch,
+    searchErrorText,
+    setSearchErrorText,
+    searchBarText,
+    checkboxShortFilms,
+    setCheckboxShortFilms,
+  } = props;
+  const {values, setValues, handleChange} = useForm({ search: '' });
+
+  React.useEffect(() => {
+    if (searchBarText) {
+      setValues({ search: searchBarText });
+    }
+  }, [searchBarText, setValues]);
+
+  function handlerCheckbox() {
+    setCheckboxShortFilms(!checkboxShortFilms);
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -14,7 +31,7 @@ function SearchForm({ onSearch, searchErrorText, setSearchErrorText }) {
       return;
     }
 
-    onSearch(values);
+    onSearch({search: values.search, checkbox: checkboxShortFilms});
   }
   return (
     <form
@@ -31,7 +48,6 @@ function SearchForm({ onSearch, searchErrorText, setSearchErrorText }) {
           value={values.search}
           onChange={(e) => {
             handleChange(e);
-            searchValid.validation(e);
           }}
           required/>
         <button type="submit" className="search-bar__button" aria-label="Найти фильм"></button>
@@ -41,10 +57,8 @@ function SearchForm({ onSearch, searchErrorText, setSearchErrorText }) {
             name="checkbox"
             className="search-bar__checkbox"
             id="shortFilm"
-            checked={values.checkbox}
-            onChange={(e) => {
-              handleChange(e);
-            }}
+            checked={checkboxShortFilms}
+            onChange={handlerCheckbox}
             required/>
           <label htmlFor="shortFilm" className="search-bar__checkbox-label"></label>
           <span className="search-bar__checkbox-text">Короткометражки</span>

@@ -19,7 +19,7 @@ function ProtectedRoute({
               </main>
               {FooterComponent && <FooterComponent />}
             </>
-          : <Redirect to="./signin" />
+          : <Redirect to="/" />
       }
     </Route>
   );

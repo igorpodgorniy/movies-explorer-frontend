@@ -32,7 +32,7 @@
   font-size: 13px;
   line-height: 1.23;
   color: #000000;
-  max-width: 220px;
+  max-width: 180px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -102,12 +102,6 @@
   box-shadow: none;
   background-position-y: 3px;
   transition: background-position-y .2s;
-}
-
-@media screen and (max-width: 975px) {
-  .film__name {
-    max-width: 180px;
-  }
 }
 
 @media screen and (max-width: 875px) {

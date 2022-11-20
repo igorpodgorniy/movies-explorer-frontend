@@ -12,9 +12,9 @@ import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import SignRoute from '../SignRoute/SignRoute';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { auth, api } from '../../utils/MainApi';
-import { loadMovies } from '../../utils/MoviesApi';
 
 function App() {
   const history = useHistory();
@@ -25,9 +25,6 @@ function App() {
   const [isRequestDone, setRequestDone] = React.useState(true);
   const [isLoading, setIsLoading] = React.useState(false);
   const [textSuccess, setTextSuccess] = React.useState('');
-  const [searchErrorText, setSearchErrorText] = React.useState('');
-  const [searchText, setSearchText] = React.useState('');
-  const [moviesList, setMoviesList] = React.useState([]);
 
   React.useEffect(() => {
     api.getUserInfo()
@@ -48,7 +45,7 @@ function App() {
       .then(() => {
         setLoggedIn(false);
         setCurrentUser({name: '', email: ''});
-        localStorage.removeItem('isLogin');
+        localStorage.clear();
         history.push('/');
       })
       .catch(err => {
@@ -115,35 +112,6 @@ function App() {
       });
   }
 
-  function handleSearch(values) {
-    setIsLoading(true);
-    setSearchErrorText('');
-    setSearchText('');
-    setMoviesList([]);
-    loadMovies()
-      .then((movies) => {
-        const searchMovies = movies.filter((movie) => {
-          return movie.nameRU
-            .toLowerCase()
-            .indexOf(values.search.toLowerCase()) > -1
-            && (values.checkbox ? movie.duration <= 40 : movie.duration);
-        });
-        localStorage.setItem('searchText', values.search);
-        localStorage.setItem('shortFilms', values.checkbox);
-        localStorage.setItem('movies', JSON.stringify(searchMovies));
-        setMoviesList(searchMovies);
-        if (searchMovies.length === 0) {
-          setSearchText('Ничего не найдено');
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }
-
   function closeAllPopups() {
     setRequestDonePopupOpen(false);
   }
@@ -159,12 +127,6 @@ function App() {
         <ProtectedRoute
           path='/movies'
           loggedIn={loggedIn}
-          onSearch={handleSearch}
-          searchErrorText={searchErrorText}
-          setSearchErrorText={setSearchErrorText}
-          searchText={searchText}
-          moviesList={moviesList}
-          isLoading={isLoading}
           mainComponent={Movies}
           headerComponent={Header}
           footerComponent={Footer}
@@ -188,14 +150,24 @@ function App() {
           headerComponent={Header}
           additionalСlassForHeader='header_type_all'
         />
-        <Route path="/signin">
-          <Header loggedIn={false} additionalСlass='header_type_sign'/>
-          <Login onLogin={handleLoginSubmit} isLoading={isLoading}/>
-        </Route>
-        <Route path="/signup">
-          <Header loggedIn={false} additionalСlass='header_type_sign'/>
-          <Register onRegister={handleRegisterSubmit} isLoading={isLoading}/>
-        </Route>
+        <SignRoute
+          path="/signin"
+          loggedIn={loggedIn}
+          isLoading={isLoading}
+          mainComponent={Login}
+          onLogin={handleLoginSubmit}
+          headerComponent={Header}
+          additionalСlassForHeader='header_type_sign'
+        />
+        <SignRoute
+          path="/signup"
+          loggedIn={loggedIn}
+          isLoading={isLoading}
+          mainComponent={Register}
+          onRegister={handleRegisterSubmit}
+          headerComponent={Header}
+          additionalСlassForHeader='header_type_sign'
+        />
         <Route path="*">
           <NotFound />
         </Route>
