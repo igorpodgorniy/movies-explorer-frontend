@@ -7,9 +7,13 @@ import { CurrentUserContext} from '../../contexts/CurrentUserContext';
 function Profile(props) {
   const { onLogOut, onUpdateUser } = props;
   const currentUser = React.useContext(CurrentUserContext);
-  const {values, handleChange} = useForm(currentUser);
+  const {values, setValues, handleChange} = useForm({ name: '', email: '' });
   const emailValid = useValidation(true);
   const nameValid = useValidation(true);
+
+  React.useEffect(() => {
+    setValues(currentUser);
+  }, [currentUser, setValues]);
 
   function handleSubmit(e) {
     e.preventDefault();
