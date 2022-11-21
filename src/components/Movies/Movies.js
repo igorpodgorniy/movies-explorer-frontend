@@ -24,7 +24,7 @@ function Movies() {
       setSearchBarText(localStorageData.searchText);
       setCheckboxShortFilms(localStorageData.shortFilms);
       setMoviesList(localStorageData.movies);
-      if (moviesList.length === 0) {
+      if (localStorageData.movies.length === 0) {
         setSearchText('Ничего не найдено');
       }
     }
@@ -44,6 +44,13 @@ function Movies() {
     setCardQuantity(5);
     setMoreCardQuantity(5);
   }, [windowWidth]);
+
+  React.useEffect(() => {
+    if (cardQuantity) {
+      setSearchMovies(localStorageData.movies);
+      setMoviesList(localStorageData.movies.slice(0, cardQuantity));
+    }
+  }, [cardQuantity])
 
   function handleSearch(values) {
     setIsLoading(true);
@@ -80,6 +87,10 @@ function Movies() {
       });
   }
 
+  function handleMoreFilms() {
+    setCardQuantity(cardQuantity + moreCardQuantity);
+  }
+
   return (
     <>
       <SearchForm
@@ -91,7 +102,12 @@ function Movies() {
         setSearchErrorText={setSearchErrorText}
       />
       {isLoading && <Preloader />}
-      <MoviesCardList moviesList={moviesList} searchText={searchText} />
+      <MoviesCardList
+        moviesList={moviesList}
+        searchMovies={searchMovies}
+        searchText={searchText}
+        handleMoreFilms={handleMoreFilms}
+      />
     </>
   );
 }

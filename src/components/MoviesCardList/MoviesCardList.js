@@ -2,9 +2,15 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { useHistory } from 'react-router-dom';
 
-function MoviesCardList({ moviesList, searchText }) {
+function MoviesCardList(props) {
+  const {
+    moviesList,
+    searchMovies,
+    searchText,
+    handleMoreFilms,
+  } = props;
   const history = useHistory();
-  moviesList = moviesList || [];
+  // moviesList = moviesList || [];
 
   return (
     <>
@@ -16,9 +22,17 @@ function MoviesCardList({ moviesList, searchText }) {
         </li>
       ))}
       </ul>
-      {history.location.pathname !== '/saved-movies' && moviesList.length !== 0 &&
+      {history.location.pathname !== '/saved-movies'
+        && moviesList.length !== 0
+        && moviesList.length !== searchMovies.length &&
         <section className="more">
-          <button className="more__button" type="button" aria-label="Подгрузить ещё фильмы">Ещё</button>
+          <button
+            className="more__button"
+            type="button"
+            onClick={handleMoreFilms}
+            aria-label="Подгрузить ещё фильмы">
+              Ещё
+            </button>
         </section>
       }
     </>
