@@ -46,7 +46,7 @@ function Movies() {
   }, [windowWidth]);
 
   React.useEffect(() => {
-    if (cardQuantity) {
+    if (cardQuantity && localStorageData) {
       setSearchMovies(localStorageData.movies);
       setMoviesList(localStorageData.movies.slice(0, cardQuantity));
     }

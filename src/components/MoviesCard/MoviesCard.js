@@ -4,6 +4,9 @@ import { useHistory } from 'react-router-dom';
 function MoviesCard(props) {
   const history = useHistory();
   const { favorite, movie } = props;
+  const hours = Math.trunc(movie.duration / 60);
+  const minutes = movie.duration % 60;
+  const duration = `${hours ? hours + 'ч' : ''}${minutes ? minutes + 'м' : ''}`
   let movieFavoriteClassName = `film__favorite ${favorite ? 'film__favorite_active' : ''}`;
   movieFavoriteClassName = `${movieFavoriteClassName} ${history.location.pathname === '/saved-movies' ? 'film__favorite_active-save' : ''}`
   return (
@@ -13,7 +16,7 @@ function MoviesCard(props) {
       </a>
       <div className="film__info">
         <h2 className="film__name" title={movie.nameRU}>{movie.nameRU}</h2>
-        <p className="film__duration">{movie.duration}</p>
+        <p className="film__duration">{duration}</p>
         <button className={movieFavoriteClassName} type="button" aria-label="Сохранить фильм"></button>
       </div>
     </article>

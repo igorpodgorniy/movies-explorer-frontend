@@ -1,7 +1,7 @@
 const { REACT_APP_URL, NODE_ENV } = process.env;
 export const BASE_URL = NODE_ENV === 'production'
   ? REACT_APP_URL
-  : 'http://localhost:3005';
+  : 'http://localhost:3001';
 
 export const auth = {
   logout: async () => {
