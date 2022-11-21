@@ -5,8 +5,12 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import useWindowInnerWidth from '../../hooks/useWindowInnerWidth';
 import { loadMovies } from '../../utils/MoviesApi';
+import { api } from '../../utils/MainApi';
+import { convertMovie } from '../../utils/service';
 
-function Movies() {
+function Movies(props) {
+  const { savedMovies, setSavedMovies } = props;
+
   const [isLoading, setIsLoading] = React.useState(false);
   const [searchText, setSearchText] = React.useState('');
   const [searchMovies, setSearchMovies] = React.useState([]);
@@ -91,6 +95,17 @@ function Movies() {
     setCardQuantity(cardQuantity + moreCardQuantity);
   }
 
+  function handleMovieLike(movie) {
+    movie = convertMovie(movie);
+    api.likeMovie(movie)
+      .then((newMovie) => {
+        setSavedMovies([...savedMovies, newMovie]);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   return (
     <>
       <SearchForm
@@ -107,6 +122,8 @@ function Movies() {
         searchMovies={searchMovies}
         searchText={searchText}
         handleMoreFilms={handleMoreFilms}
+        onMovieLike={handleMovieLike}
+        savedMovies={savedMovies}
       />
     </>
   );

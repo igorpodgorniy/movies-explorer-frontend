@@ -25,6 +25,7 @@ function App() {
   const [isRequestDone, setRequestDone] = React.useState(true);
   const [isLoading, setIsLoading] = React.useState(false);
   const [textSuccess, setTextSuccess] = React.useState('');
+  const [savedMovies, setSavedMovies] = React.useState([]);
 
   React.useEffect(() => {
     api.getUserInfo()
@@ -39,6 +40,19 @@ function App() {
         console.log(err);
       });
   }, []);
+
+  React.useEffect(() => {
+    if (loggedIn) {
+      api.getSavedMovies()
+        .then((data) => {
+          setSavedMovies(data);
+          localStorage.setItem('savedMovies', JSON.stringify(data));
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }, [loggedIn]);
 
   function signOut() {
     auth.logout()
@@ -130,6 +144,8 @@ function App() {
           mainComponent={Movies}
           headerComponent={Header}
           footerComponent={Footer}
+          savedMovies={savedMovies}
+          setSavedMovies={setSavedMovies}
           additionalСlassForHeader='header_type_all'
         />
         <ProtectedRoute
@@ -138,6 +154,8 @@ function App() {
           mainComponent={SavedMovies}
           headerComponent={Header}
           footerComponent={Footer}
+          savedMovies={savedMovies}
+          setSavedMovies={setSavedMovies}
           additionalСlassForHeader='header_type_all'
         />
         <ProtectedRoute

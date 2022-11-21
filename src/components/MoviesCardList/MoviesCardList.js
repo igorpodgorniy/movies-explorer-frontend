@@ -1,6 +1,8 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { useHistory } from 'react-router-dom';
+import { api } from '../../utils/MainApi';
+import { getMovieIdOnSavedMovies } from '../../utils/service';
 
 function MoviesCardList(props) {
   const {
@@ -8,17 +10,44 @@ function MoviesCardList(props) {
     searchMovies,
     searchText,
     handleMoreFilms,
+    onMovieLike,
+    savedMovies,
+    setSavedMovies,
   } = props;
   const history = useHistory();
-  // moviesList = moviesList || [];
+
+  function isSavedMovie(savedMovies, movie) {
+    return savedMovies.find((item) => item.movieId === (movie.id || movie.movieId));
+  };
+
+  function handleMovieDelete(movieId, isSavedMoviePage) {
+    const idFilm = isSavedMoviePage
+      ? movieId
+      : getMovieIdOnSavedMovies(movieId, savedMovies);
+
+    api.deleteMovie(idFilm)
+      .then(() => {
+        setSavedMovies((savedMovies) =>
+          savedMovies.filter((movie) => movie._id !== idFilm)
+        );
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   return (
     <>
       {searchText && <h3 className="films__search-result-text">{searchText}</h3>}
       <ul className="films">
       { moviesList.map((movie) => (
-        <li key={movie.id}>
-          <MoviesCard movie={movie} />
+        <li key={movie.id || movie.movieId}>
+          <MoviesCard
+            movie={movie}
+            onMovieLike={onMovieLike}
+            onMovieDelete={handleMovieDelete}
+            isSavedMovie={isSavedMovie(savedMovies, movie)}
+          />
         </li>
       ))}
       </ul>

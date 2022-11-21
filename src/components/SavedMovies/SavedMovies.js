@@ -2,11 +2,16 @@ import '../Movies/Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
-function SavedMovies() {
+function SavedMovies(props) {
+  const { savedMovies, setSavedMovies } = props;
   return (
     <>
       <SearchForm />
-      <MoviesCardList />
+      <MoviesCardList
+        moviesList={savedMovies}
+        savedMovies={savedMovies}
+        setSavedMovies={setSavedMovies}
+      />
     </>
   );
 }

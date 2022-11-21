@@ -60,7 +60,38 @@ export const api = {
       body: JSON.stringify(newData),
      })
      .then(_checkResponse);
-   },
+  },
+   likeMovie: async (movie) => {
+    return fetch(`${BASE_URL}/movies`, {
+      method: 'POST',
+      headers: {
+       'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify(movie),
+     })
+     .then(_checkResponse);
+  },
+  deleteMovie: async (movieId) => {
+    return fetch(`${BASE_URL}/movies/${movieId}`, {
+      method: 'DELETE',
+      headers: {
+       'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+     })
+     .then(_checkResponse);
+  },
+  getSavedMovies: async () => {
+    return fetch(`${BASE_URL}/movies`, {
+      method: 'GET',
+      headers: {
+       'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+     })
+     .then(_checkResponse);
+  }
 };
 
 function _checkResponse(res) {
