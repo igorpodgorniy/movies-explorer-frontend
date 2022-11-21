@@ -60,7 +60,6 @@ function App() {
         setLoggedIn(false);
         setCurrentUser({name: '', email: ''});
         localStorage.clear();
-        history.push('/');
       })
       .catch(err => {
         console.log(err);

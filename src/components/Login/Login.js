@@ -40,6 +40,7 @@ function Login({ onLogin, isLoading }) {
                 emailValid.validation(e);
               }}
               placeholder="Введите email"
+              autoComplete="off"
               required
             />
             <span className="sign__error">
@@ -59,6 +60,7 @@ function Login({ onLogin, isLoading }) {
                 passwordValid.validation(e);
               }}
               placeholder="Введите пароль"
+              autoComplete="off"
               required
             />
             <span className="sign__error">

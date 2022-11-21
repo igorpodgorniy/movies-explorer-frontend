@@ -41,14 +41,19 @@ function Profile(props) {
             name="name"
             type="text"
             minLength="2"
+            pattern="[A-Za-zА-Яа-яЁё -]{0,}"
             value={values.name || ''}
             onChange={(e) => {
               handleChange(e);
               nameValid.validation(e);
             }}
             placeholder="Введите имя"
+            autoComplete="off"
             required
           />
+          <span className="profile__error">
+            {nameValid.isWrong && nameValid.errorMessage}
+          </span>
         </label>
         <label className="profile__label">
           E-mail
@@ -63,17 +68,21 @@ function Profile(props) {
               emailValid.validation(e);
             }}
             placeholder="Введите email"
+            autoComplete="off"
             required
           />
+          <span className="profile__error profile__error_type_last ">
+            {emailValid.isWrong && emailValid.errorMessage}
+          </span>
         </label>
         <button
           className="profile__button"
           type="submit"
           disabled={
-            emailValid.isWrong
+            (values.email === currentUser.email
+            && values.name === currentUser.name)
+            || emailValid.isWrong
             || nameValid.isWrong
-            || values.email === ""
-            || values.name === ""
           }>
             Редактировать
           </button>

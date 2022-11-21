@@ -35,12 +35,15 @@ function Register({ onRegister, isLoading }) {
               name="name"
               type="text"
               minLength="2"
+              pattern="[A-Za-zА-Яа-яЁё -]{0,}"
+              title="Допустимы только латиница, кириллица, пробел или дефис"
               value={values.name}
               onChange={(e) => {
                 handleChange(e);
                 nameValid.validation(e);
               }}
               placeholder="Введите имя"
+              autoComplete="off"
               required
             />
             <span className="sign__error">
@@ -60,6 +63,7 @@ function Register({ onRegister, isLoading }) {
                 emailValid.validation(e);
               }}
               placeholder="Введите email"
+              autoComplete="off"
               required
             />
             <span className="sign__error">
@@ -79,6 +83,7 @@ function Register({ onRegister, isLoading }) {
                 passwordValid.validation(e);
               }}
               placeholder="Введите пароль"
+              autoComplete="off"
               required
             />
             <span className="sign__error">
