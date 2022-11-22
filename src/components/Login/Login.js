@@ -76,7 +76,7 @@ function Login({ onLogin, isLoading }) {
               || values.email === ""
               || values.password === ""
             }>
-              Войти
+              {isLoading ? 'Отправка данных' : 'Войти'}
             </button>
         </fieldset>
         <p className="sign__text">Ещё не зарегистрированы?<NavLink to="/signup" className="sign__link">Регистрация</NavLink></p>

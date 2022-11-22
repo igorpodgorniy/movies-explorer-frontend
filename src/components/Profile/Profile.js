@@ -5,7 +5,7 @@ import useValidation from '../../hooks/useValidation';
 import { CurrentUserContext} from '../../contexts/CurrentUserContext';
 
 function Profile(props) {
-  const { onLogOut, onUpdateUser } = props;
+  const { onLogOut, onUpdateUser, isLoading } = props;
   const currentUser = React.useContext(CurrentUserContext);
   const {values, setValues, handleChange} = useForm({ name: '', email: '' });
   const emailValid = useValidation(true);
@@ -84,7 +84,7 @@ function Profile(props) {
             || emailValid.isWrong
             || nameValid.isWrong
           }>
-            Редактировать
+            {isLoading ? 'Сохранение...' : 'Редактировать'}
           </button>
       </form>
       <button

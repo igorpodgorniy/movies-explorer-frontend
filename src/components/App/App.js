@@ -67,6 +67,7 @@ function App() {
   }
 
   function handleLogin(data, textSuccess) {
+    setIsLoading(false);
     setTextSuccess(textSuccess);
     setRequestDone(true);
     localStorage.setItem('isLogin', true);
@@ -79,6 +80,7 @@ function App() {
   }
 
   function handleLoginSubmit(email, password) {
+    setIsLoading(true);
     auth.authorize(email, password)
       .then((res) => {
         if (res.data) {
@@ -95,6 +97,7 @@ function App() {
   }
 
   function handleRegisterSubmit(name, email, password) {
+    setIsLoading(true);
     auth.register(name, email, password)
       .then((res) => {
         if (res.data) {
@@ -112,16 +115,20 @@ function App() {
 
   function handleUpdateUser(newData) {
     setIsLoading(true);
+    setTextSuccess('Изменения сохранены.');
     api.editProfile(newData)
       .then((data) => {
+        setIsLoading(false);
+        setRequestDone(true);
         setCurrentUser(data);
         closeAllPopups();
       })
       .catch(err => {
+        setRequestDone(false);
         console.log(err);
       })
       .finally(() => {
-        setIsLoading(false);
+        setRequestDonePopupOpen(true);
       });
   }
 

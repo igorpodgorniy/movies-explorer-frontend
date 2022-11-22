@@ -101,7 +101,7 @@ function Register({ onRegister, isLoading }) {
               || values.email === ""
               || values.password === ""
             }>
-              Зарегистрироваться
+              {isLoading ? 'Отправка данных' : 'Зарегистрироваться'}
             </button>
         </fieldset>
         <p className="sign__text">Уже зарегистрированы?<NavLink to="/signin" className="sign__link">Войти</NavLink></p>
