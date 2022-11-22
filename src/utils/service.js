@@ -12,3 +12,12 @@ export const convertMovie = (movie) => {
 export const getMovieIdOnSavedMovies = (id, arr) => {
   return arr.find((item) => item.movieId === id)._id;
 }
+
+export const getSearchMovieList = (movieList, values) => {
+  return movieList.filter((movie) => {
+    return movie.nameRU
+      .toLowerCase()
+      .indexOf(values.search.toLowerCase()) > -1
+      && (values.checkbox ? movie.duration <= 40 : movie.duration);
+  });
+}

@@ -6,7 +6,7 @@ import Preloader from '../Preloader/Preloader';
 import useWindowInnerWidth from '../../hooks/useWindowInnerWidth';
 import { loadMovies } from '../../utils/MoviesApi';
 import { api } from '../../utils/MainApi';
-import { convertMovie } from '../../utils/service';
+import { convertMovie, getSearchMovieList } from '../../utils/service';
 
 function Movies(props) {
   const { savedMovies, setSavedMovies } = props;
@@ -63,12 +63,7 @@ function Movies(props) {
     setMoviesList([]);
     loadMovies()
       .then((movies) => {
-        const searchMovies = movies.filter((movie) => {
-          return movie.nameRU
-            .toLowerCase()
-            .indexOf(values.search.toLowerCase()) > -1
-            && (values.checkbox ? movie.duration <= 40 : movie.duration);
-        });
+        const searchMovies = getSearchMovieList(movies, values);
         const viewMovies = searchMovies.slice(0, cardQuantity);
         const localStorageData = {
           searchText: values.search,
@@ -124,6 +119,7 @@ function Movies(props) {
         handleMoreFilms={handleMoreFilms}
         onMovieLike={handleMovieLike}
         savedMovies={savedMovies}
+        setSavedMovies={setSavedMovies}
       />
     </>
   );
