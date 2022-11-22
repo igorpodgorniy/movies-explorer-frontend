@@ -8,8 +8,8 @@ function Profile(props) {
   const { onLogOut, onUpdateUser, isLoading } = props;
   const currentUser = React.useContext(CurrentUserContext);
   const {values, setValues, handleChange} = useForm({ name: '', email: '' });
-  const emailValid = useValidation(true);
-  const nameValid = useValidation(true);
+  const emailValid = useValidation(false);
+  const nameValid = useValidation(false);
 
   React.useEffect(() => {
     setValues(currentUser);
@@ -42,6 +42,7 @@ function Profile(props) {
             type="text"
             minLength="2"
             pattern="[A-Za-zА-Яа-яЁё -]{0,}"
+            title="Допустимы только латиница, кириллица, пробел или дефис"
             value={values.name || ''}
             onChange={(e) => {
               handleChange(e);

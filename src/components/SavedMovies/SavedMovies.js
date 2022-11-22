@@ -25,6 +25,7 @@ function SavedMovies(props) {
       setSearchText('Ничего не найдено');
     }
   }
+
   return (
     <>
       <SearchForm
