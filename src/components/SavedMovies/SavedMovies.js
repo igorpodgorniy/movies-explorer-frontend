@@ -26,10 +26,6 @@ function SavedMovies(props) {
     }
   }, [checkboxShortFilms, searchMovies]);
 
-  React.useEffect(() => {
-    moviesList.length === 0 ? setSearchText('Ничего не найдено') : setSearchText('')
-  }, [moviesList]);
-
   function handleSearch(values) {
     setSearchErrorText('');
     setSearchText('');

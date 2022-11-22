@@ -44,10 +44,6 @@ function Movies(props) {
   }, [checkboxShortFilms, searchMovies]);
 
   React.useEffect(() => {
-    moviesList.length === 0 ? setSearchText('Ничего не найдено') : setSearchText('')
-  }, [moviesList]);
-
-  React.useEffect(() => {
     if (windowWidth >= 876) {
       setCardQuantity(12);
       setMoreCardQuantity(4);
