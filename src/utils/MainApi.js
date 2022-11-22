@@ -34,6 +34,7 @@ export const auth = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
+      credentials: 'include',
       body: JSON.stringify({name, email, password})
     })
     .then(_checkResponse);

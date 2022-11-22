@@ -13,6 +13,7 @@ function MoviesCardList(props) {
     onMovieLike,
     savedMovies,
     setSavedMovies,
+    setMoviesList,
   } = props;
   const history = useHistory();
 
@@ -27,9 +28,8 @@ function MoviesCardList(props) {
 
     api.deleteMovie(idFilm)
       .then(() => {
-        setSavedMovies((savedMovies) =>
-          savedMovies.filter((movie) => movie._id !== idFilm)
-        );
+        setSavedMovies((savedMovies) => savedMovies.filter((movie) => movie._id !== idFilm));
+        setMoviesList((movies) => movies.filter((movie) => movie._id !== idFilm));
       })
       .catch(err => {
         console.log(err);

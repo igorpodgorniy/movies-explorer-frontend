@@ -12,6 +12,7 @@ function Movies(props) {
   const { savedMovies, setSavedMovies } = props;
 
   const [isLoading, setIsLoading] = React.useState(false);
+  const [allMovies, setAllMovies] = React.useState([]);
   const [searchText, setSearchText] = React.useState('');
   const [searchMovies, setSearchMovies] = React.useState([]);
   const [moviesList, setMoviesList] = React.useState([]);
@@ -22,17 +23,29 @@ function Movies(props) {
   const [checkboxShortFilms, setCheckboxShortFilms] = React.useState(false);
   const windowWidth = useWindowInnerWidth();
   const localStorageData = JSON.parse(localStorage.getItem('localStorageData'));
+  const shortFilms = JSON.parse(localStorage.getItem('shortFilms'));
 
   React.useEffect(() => {
     if (localStorageData) {
       setSearchBarText(localStorageData.searchText);
-      setCheckboxShortFilms(localStorageData.shortFilms);
+      setCheckboxShortFilms(shortFilms);
       setMoviesList(localStorageData.movies);
       if (localStorageData.movies.length === 0) {
         setSearchText('Ничего не найдено');
       }
     }
   }, []);
+
+  React.useEffect(() => {
+    checkboxShortFilms
+      ? setMoviesList(searchMovies.filter((movie) => movie.duration <= 40))
+      : setMoviesList(searchMovies);
+    localStorage.setItem('shortFilms', checkboxShortFilms);
+  }, [checkboxShortFilms, searchMovies]);
+
+  React.useEffect(() => {
+    moviesList.length === 0 ? setSearchText('Ничего не найдено') : setSearchText('')
+  }, [moviesList]);
 
   React.useEffect(() => {
     if (windowWidth >= 876) {
@@ -54,36 +67,45 @@ function Movies(props) {
       setSearchMovies(localStorageData.movies);
       setMoviesList(localStorageData.movies.slice(0, cardQuantity));
     }
-  }, [cardQuantity])
+  }, [cardQuantity]);
 
   function handleSearch(values) {
-    setIsLoading(true);
     setSearchErrorText('');
     setSearchText('');
     setMoviesList([]);
-    loadMovies()
-      .then((movies) => {
-        const searchMovies = getSearchMovieList(movies, values);
-        const viewMovies = searchMovies.slice(0, cardQuantity);
-        const localStorageData = {
-          searchText: values.search,
-          shortFilms: values.checkbox,
-          movies: searchMovies,
-        }
-        localStorage.setItem('localStorageData', JSON.stringify(localStorageData));
-        setSearchMovies(searchMovies);
-        setMoviesList(viewMovies);
-        if (searchMovies.length === 0) {
-          setSearchText('Ничего не найдено');
-        }
-      })
-      .catch(err => {
-        console.log(err);
-        setSearchText('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    if (allMovies.length === 0) {
+      setIsLoading(true);
+      loadMovies()
+        .then((movies) => {
+          setAllMovies(movies);
+          searchFilms(movies, values);
+        })
+        .catch(err => {
+          console.log(err);
+          setSearchText('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    } else {
+      searchFilms(allMovies, values);
+    }
+  }
+
+  function searchFilms(movies, values) {
+    const searchMovies = getSearchMovieList(movies, values);
+    const viewMovies = searchMovies.slice(0, cardQuantity);
+    const localStorageData = {
+      searchText: values.search,
+      movies: searchMovies,
+    }
+    localStorage.setItem('localStorageData', JSON.stringify(localStorageData));
+    localStorage.setItem('shortFilms', values.checkbox);
+    setSearchMovies(searchMovies);
+    setMoviesList(viewMovies);
+    if (searchMovies.length === 0) {
+      setSearchText('Ничего не найдено');
+    }
   }
 
   function handleMoreFilms() {
