@@ -3,6 +3,7 @@ import '../Movies/Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { getSearchMovieList } from '../../utils/service';
+import { DURATION_SHORT_FILM } from '../../utils/constants';
 
 function SavedMovies(props) {
   const { savedMovies, setSavedMovies, onSignOut } = props;
@@ -21,7 +22,7 @@ function SavedMovies(props) {
   React.useEffect(() => {
     if (searchMovies.length !== 0) {
       checkboxShortFilms
-        ? setMoviesList(searchMovies.filter((movie) => movie.duration <= 40))
+        ? setMoviesList(searchMovies.filter((movie) => movie.duration <= DURATION_SHORT_FILM))
         : setMoviesList(searchMovies);
     }
   }, [checkboxShortFilms, searchMovies]);

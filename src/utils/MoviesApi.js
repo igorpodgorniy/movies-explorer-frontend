@@ -1,5 +1,7 @@
+import { BASE_MOVI_URL } from './constants';
+
 export const loadMovies = async () => {
-  return fetch('https://api.nomoreparties.co/beatfilm-movies', {
+  return fetch(`${BASE_MOVI_URL}/beatfilm-movies`, {
     method: 'GET',
     headers: {
      'Content-Type': 'application/json'

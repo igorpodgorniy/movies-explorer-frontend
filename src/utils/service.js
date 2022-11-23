@@ -1,6 +1,11 @@
+import {
+  DURATION_SHORT_FILM,
+  BASE_MOVI_URL,
+} from './constants';
+
 export const convertMovie = (movie) => {
-  movie.thumbnail = `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`;
-  movie.image = `https://api.nomoreparties.co${movie.image.url}`;
+  movie.thumbnail = `${BASE_MOVI_URL}${movie.image.formats.thumbnail.url}`;
+  movie.image = `${BASE_MOVI_URL}${movie.image.url}`;
   movie.movieId = movie.id;
   delete movie.id;
   delete movie.created_at;
@@ -18,6 +23,6 @@ export const getSearchMovieList = (movieList, values) => {
     return movie.nameRU
       .toLowerCase()
       .indexOf(values.search.toLowerCase()) > -1
-      && (values.checkbox ? movie.duration <= 40 : movie.duration);
+      && (values.checkbox ? movie.duration <= DURATION_SHORT_FILM : movie.duration);
   });
 }

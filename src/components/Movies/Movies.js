@@ -7,6 +7,17 @@ import useWindowInnerWidth from '../../hooks/useWindowInnerWidth';
 import { loadMovies } from '../../utils/MoviesApi';
 import { api } from '../../utils/MainApi';
 import { convertMovie, getSearchMovieList } from '../../utils/service';
+import {
+  DURATION_SHORT_FILM,
+  CARD_QUANTITY_PC,
+  CARD_QUANTITY_TABLET,
+  CARD_QUANTITY_MOBILE,
+  MORE_CARD_QUANTITY_PC,
+  MORE_CARD_QUANTITY_TABLET,
+  MORE_CARD_QUANTITY_MOBILE,
+  WINDOW_WIDTH_PC,
+  WINDOW_WIDTH_TABLET,
+} from '../../utils/constants';
 
 function Movies(props) {
   const { savedMovies, setSavedMovies, onSignOut } = props;
@@ -37,26 +48,26 @@ function Movies(props) {
   }, []);
 
   React.useEffect(() => {
+    if (windowWidth >= WINDOW_WIDTH_PC) {
+      setCardQuantity(CARD_QUANTITY_PC);
+      setMoreCardQuantity(MORE_CARD_QUANTITY_PC);
+      return;
+    }
+    if (windowWidth > WINDOW_WIDTH_TABLET) {
+      setCardQuantity(CARD_QUANTITY_TABLET);
+      setMoreCardQuantity(MORE_CARD_QUANTITY_TABLET);
+      return;
+    }
+    setCardQuantity(CARD_QUANTITY_MOBILE);
+    setMoreCardQuantity(MORE_CARD_QUANTITY_MOBILE);
+  }, [windowWidth]);
+
+  React.useEffect(() => {
     checkboxShortFilms
-      ? setMoviesList(searchMovies.filter((movie) => movie.duration <= 40))
+      ? setMoviesList(searchMovies.filter((movie) => movie.duration <= DURATION_SHORT_FILM))
       : setMoviesList(searchMovies);
     localStorage.setItem('shortFilms', checkboxShortFilms);
   }, [checkboxShortFilms, searchMovies]);
-
-  React.useEffect(() => {
-    if (windowWidth >= 876) {
-      setCardQuantity(12);
-      setMoreCardQuantity(4);
-      return;
-    }
-    if (windowWidth > 600) {
-      setCardQuantity(8);
-      setMoreCardQuantity(2);
-      return;
-    }
-    setCardQuantity(5);
-    setMoreCardQuantity(5);
-  }, [windowWidth]);
 
   React.useEffect(() => {
     if (cardQuantity && localStorageData) {

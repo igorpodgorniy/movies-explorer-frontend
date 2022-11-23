@@ -1,0 +1,10 @@
+export const DURATION_SHORT_FILM = 40;
+export const CARD_QUANTITY_PC = 12;
+export const CARD_QUANTITY_TABLET = 8;
+export const CARD_QUANTITY_MOBILE = 5;
+export const MORE_CARD_QUANTITY_PC = 4;
+export const MORE_CARD_QUANTITY_TABLET = 2;
+export const MORE_CARD_QUANTITY_MOBILE = 5;
+export const WINDOW_WIDTH_PC = 876;
+export const WINDOW_WIDTH_TABLET = 600;
+export const BASE_MOVI_URL = 'https://api.nomoreparties.co';
