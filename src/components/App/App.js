@@ -152,6 +152,7 @@ function App() {
           footerComponent={Footer}
           savedMovies={savedMovies}
           setSavedMovies={setSavedMovies}
+          onSignOut={signOut}
           additionalСlassForHeader='header_type_all'
         />
         <ProtectedRoute
@@ -162,6 +163,7 @@ function App() {
           footerComponent={Footer}
           savedMovies={savedMovies}
           setSavedMovies={setSavedMovies}
+          onSignOut={signOut}
           additionalСlassForHeader='header_type_all'
         />
         <ProtectedRoute

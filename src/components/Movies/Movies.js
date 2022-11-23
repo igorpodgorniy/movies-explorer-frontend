@@ -9,7 +9,7 @@ import { api } from '../../utils/MainApi';
 import { convertMovie, getSearchMovieList } from '../../utils/service';
 
 function Movies(props) {
-  const { savedMovies, setSavedMovies } = props;
+  const { savedMovies, setSavedMovies, onSignOut } = props;
 
   const [isLoading, setIsLoading] = React.useState(false);
   const [allMovies, setAllMovies] = React.useState([]);
@@ -115,6 +115,10 @@ function Movies(props) {
         setSavedMovies([...savedMovies, newMovie]);
       })
       .catch(err => {
+        console.log(err);
+        if (err === 'Ошибка: 401') {
+          onSignOut();
+        }
         console.log(err);
       });
   }

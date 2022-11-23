@@ -5,7 +5,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { getSearchMovieList } from '../../utils/service';
 
 function SavedMovies(props) {
-  const { savedMovies, setSavedMovies } = props;
+  const { savedMovies, setSavedMovies, onSignOut } = props;
 
   const [moviesList, setMoviesList] = React.useState([]);
   const [searchMovies, setSearchMovies] = React.useState([]);
@@ -53,6 +53,7 @@ function SavedMovies(props) {
         savedMovies={savedMovies}
         setSavedMovies={setSavedMovies}
         setMoviesList={setMoviesList}
+        onSignOut={onSignOut}
       />
     </>
   );

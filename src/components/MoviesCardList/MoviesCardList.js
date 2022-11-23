@@ -14,6 +14,7 @@ function MoviesCardList(props) {
     savedMovies,
     setSavedMovies,
     setMoviesList,
+    onSignOut,
   } = props;
   const history = useHistory();
 
@@ -32,6 +33,9 @@ function MoviesCardList(props) {
         setMoviesList((movies) => movies.filter((movie) => movie._id !== idFilm));
       })
       .catch(err => {
+        if (err === 'Ошибка: 401') {
+          onSignOut();
+        }
         console.log(err);
       });
   }
