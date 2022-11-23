@@ -1,5 +1,6 @@
 import './Movies.css';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
@@ -26,6 +27,8 @@ function Movies(props) {
   /* savedMovies - сохранённые фильмы пользователя, полученные через api */
   const { savedMovies, setSavedMovies, onSignOut } = props;
 
+  const history = useHistory();
+
   const [isLoading, setIsLoading] = React.useState(false);
   const [allMovies, setAllMovies] = React.useState([]); // все фильмы, загруженные при первом поиске
   const [searchMovies, setSearchMovies] = React.useState([]); // все фильмы, удовлетворяющие поисковым параметрам
@@ -47,6 +50,7 @@ function Movies(props) {
       setAllMovies(localAllMovie);
       setSearchBarText(localStorageData.searchText);
       setCheckboxShortFilms(shortFilms);
+      searchFilms(localAllMovie, localStorageData.searchText, shortFilms);
       setMoviesList(localStorageData.movies);
       if (localStorageData.movies.length === 0) {
         setSearchText('Ничего не найдено');
