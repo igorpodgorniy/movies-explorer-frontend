@@ -6,7 +6,11 @@ import Preloader from '../Preloader/Preloader';
 import useWindowInnerWidth from '../../hooks/useWindowInnerWidth';
 import { loadMovies } from '../../utils/MoviesApi';
 import { api } from '../../utils/MainApi';
-import { convertMovie, getSearchMovieList } from '../../utils/service';
+import {
+  convertMovie,
+  getSearchMovieList,
+  getMovieIdOnSavedMovies,
+} from '../../utils/service';
 import {
   CARD_QUANTITY_PC,
   CARD_QUANTITY_TABLET,
@@ -149,6 +153,21 @@ function Movies(props) {
       });
   }
 
+  function handleMovieDelete(movieId) {
+    const idFilm = getMovieIdOnSavedMovies(movieId, savedMovies);
+
+    api.deleteMovie(idFilm)
+      .then(() => {
+        setSavedMovies((savedMovies) => savedMovies.filter((movie) => movie._id !== idFilm));
+      })
+      .catch(err => {
+        if (err === 'Ошибка: 401') {
+          onSignOut();
+        }
+        console.log(err);
+      });
+  }
+
   return (
     <>
       <SearchForm
@@ -164,10 +183,11 @@ function Movies(props) {
         moviesList={moviesList}
         searchMovies={searchMovies}
         searchText={searchText}
-        handleMoreFilms={handleMoreFilms}
-        onMovieLike={handleMovieLike}
         savedMovies={savedMovies}
         setSavedMovies={setSavedMovies}
+        handleMoreFilms={handleMoreFilms}
+        onMovieLike={handleMovieLike}
+        onMovieDelete={handleMovieDelete}
       />
     </>
   );

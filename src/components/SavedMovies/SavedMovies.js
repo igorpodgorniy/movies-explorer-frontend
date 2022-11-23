@@ -3,7 +3,7 @@ import '../Movies/Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { getSearchMovieList } from '../../utils/service';
-import { DURATION_SHORT_FILM } from '../../utils/constants';
+import { api } from '../../utils/MainApi';
 
 function SavedMovies(props) {
   const { savedMovies, setSavedMovies, onSignOut } = props;
@@ -12,25 +12,29 @@ function SavedMovies(props) {
   const [searchMovies, setSearchMovies] = React.useState([]);
   const [searchText, setSearchText] = React.useState('');
   const [searchErrorText, setSearchErrorText] = React.useState('');
+  const [searchBarText, setSearchBarText] = React.useState('');
   const [checkboxShortFilms, setCheckboxShortFilms] = React.useState(false);
 
   React.useEffect(() => {
     setMoviesList(savedMovies);
     setSearchMovies(savedMovies);
+    handleSearch({ search: searchBarText, checkbox: checkboxShortFilms });
   }, [savedMovies]);
 
+  // ищет фильмы, когда переключается чекбокс
   React.useEffect(() => {
-    if (searchMovies.length !== 0) {
-      checkboxShortFilms
-        ? setMoviesList(searchMovies.filter((movie) => movie.duration <= DURATION_SHORT_FILM))
-        : setMoviesList(searchMovies);
+    if (savedMovies && savedMovies.length !== 0) {
+      handleSearch({ search: searchBarText, checkbox: checkboxShortFilms});
     }
-  }, [checkboxShortFilms, searchMovies]);
+  }, [checkboxShortFilms]);
 
   function handleSearch(values) {
     setSearchErrorText('');
     setSearchText('');
-    const searchMovies = getSearchMovieList(savedMovies, values);
+    const searchMovies = getSearchMovieList(savedMovies, values.search, values.checkbox);
+
+    // добавляет значение в стейт
+    setSearchBarText(values.search);
     setMoviesList(searchMovies);
     setSearchMovies(searchMovies);
     if (searchMovies.length === 0) {
@@ -38,23 +42,37 @@ function SavedMovies(props) {
     }
   }
 
+  function handleMovieDelete(movieId) {
+    api.deleteMovie(movieId)
+      .then(() => {
+        setSavedMovies((savedMovies) => savedMovies.filter((movie) => movie._id !== movieId));
+      })
+      .catch(err => {
+        if (err === 'Ошибка: 401') {
+          onSignOut();
+        }
+        console.log(err);
+      });
+  }
+
   return (
     <>
       <SearchForm
         onSearch={handleSearch}
+        searchBarText={searchBarText}
         checkboxShortFilms={checkboxShortFilms}
         setCheckboxShortFilms={setCheckboxShortFilms}
         searchErrorText={searchErrorText}
         setSearchErrorText={setSearchErrorText}
       />
       <MoviesCardList
-        searchText={searchText}
         moviesList={moviesList}
-        searchMovies={savedMovies}
+        searchMovies={searchMovies}
+        searchText={searchText}
         savedMovies={savedMovies}
         setSavedMovies={setSavedMovies}
-        setMoviesList={setMoviesList}
         onSignOut={onSignOut}
+        onMovieDelete={handleMovieDelete}
       />
     </>
   );

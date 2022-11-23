@@ -4,14 +4,21 @@ import {
 } from './constants';
 
 export const convertMovie = (movie) => {
-  movie.thumbnail = `${BASE_MOVI_URL}${movie.image.formats.thumbnail.url}`;
-  movie.image = `${BASE_MOVI_URL}${movie.image.url}`;
-  movie.movieId = movie.id;
-  delete movie.id;
-  delete movie.created_at;
-  delete movie.updated_at;
+  const data = {
+    country: movie.country,
+    director: movie.director,
+    duration: movie.duration,
+    year: movie.year,
+    description: movie.description,
+    trailerLink: movie.trailerLink,
+    thumbnail: `${BASE_MOVI_URL}${movie.image.formats.thumbnail.url}`,
+    image: `${BASE_MOVI_URL}${movie.image.url}`,
+    movieId: movie.id,
+    nameRU: movie.nameRU,
+    nameEN: movie.nameEN,
+  }
 
-  return movie;
+  return data;
 }
 
 export const getMovieIdOnSavedMovies = (id, arr) => {

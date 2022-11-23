@@ -1,8 +1,6 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { useHistory } from 'react-router-dom';
-import { api } from '../../utils/MainApi';
-import { getMovieIdOnSavedMovies } from '../../utils/service';
 
 function MoviesCardList(props) {
   const {
@@ -12,33 +10,13 @@ function MoviesCardList(props) {
     handleMoreFilms,
     onMovieLike,
     savedMovies,
-    setSavedMovies,
-    setMoviesList,
-    onSignOut,
+    onMovieDelete,
   } = props;
   const history = useHistory();
 
   function isSavedMovie(savedMovies, movie) {
     return savedMovies.find((item) => item.movieId === (movie.id || movie.movieId));
   };
-
-  function handleMovieDelete(movieId, isSavedMoviePage) {
-    const idFilm = isSavedMoviePage
-      ? movieId
-      : getMovieIdOnSavedMovies(movieId, savedMovies);
-
-    api.deleteMovie(idFilm)
-      .then(() => {
-        setSavedMovies((savedMovies) => savedMovies.filter((movie) => movie._id !== idFilm));
-        setMoviesList((movies) => movies.filter((movie) => movie._id !== idFilm));
-      })
-      .catch(err => {
-        if (err === 'Ошибка: 401') {
-          onSignOut();
-        }
-        console.log(err);
-      });
-  }
 
   return (
     <>
@@ -49,7 +27,7 @@ function MoviesCardList(props) {
           <MoviesCard
             movie={movie}
             onMovieLike={onMovieLike}
-            onMovieDelete={handleMovieDelete}
+            onMovieDelete={onMovieDelete}
             isSavedMovie={isSavedMovie(savedMovies, movie)}
           />
         </li>

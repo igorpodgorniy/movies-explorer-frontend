@@ -29,7 +29,8 @@ function MoviesCard(props) {
   }
 
   function handleMovieDelete() {
-    onMovieDelete(movie.id || movie._id, isSavedMoviePage)
+    const id = isSavedMoviePage ? movie._id : movie.id;
+    onMovieDelete(id);
   }
   return (
     <article className="film">
