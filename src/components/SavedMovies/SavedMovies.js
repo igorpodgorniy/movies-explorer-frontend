@@ -37,7 +37,7 @@ function SavedMovies(props) {
     setSearchBarText(values.search);
     setMoviesList(searchMovies);
     setSearchMovies(searchMovies);
-    if (searchMovies.length === 0) {
+    if (searchMovies.length === 0 && savedMovies.length !== 0) {
       setSearchText('Ничего не найдено');
     }
   }
