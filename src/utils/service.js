@@ -18,11 +18,11 @@ export const getMovieIdOnSavedMovies = (id, arr) => {
   return arr.find((item) => item.movieId === id)._id;
 }
 
-export const getSearchMovieList = (movieList, values) => {
+export const getSearchMovieList = (movieList, search, checkbox) => {
   return movieList.filter((movie) => {
     return movie.nameRU
       .toLowerCase()
-      .indexOf(values.search.toLowerCase()) > -1
-      && (values.checkbox ? movie.duration <= DURATION_SHORT_FILM : movie.duration);
+      .indexOf(search.toLowerCase()) > -1
+      && (checkbox ? movie.duration <= DURATION_SHORT_FILM : movie.duration);
   });
 }

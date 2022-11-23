@@ -8,7 +8,6 @@ import { loadMovies } from '../../utils/MoviesApi';
 import { api } from '../../utils/MainApi';
 import { convertMovie, getSearchMovieList } from '../../utils/service';
 import {
-  DURATION_SHORT_FILM,
   CARD_QUANTITY_PC,
   CARD_QUANTITY_TABLET,
   CARD_QUANTITY_MOBILE,
@@ -20,24 +19,28 @@ import {
 } from '../../utils/constants';
 
 function Movies(props) {
+  /* savedMovies - сохранённые фильмы пользователя, полученные через api */
   const { savedMovies, setSavedMovies, onSignOut } = props;
 
   const [isLoading, setIsLoading] = React.useState(false);
-  const [allMovies, setAllMovies] = React.useState([]);
+  const [allMovies, setAllMovies] = React.useState([]); // все фильмы, загруженные при первом поиске
+  const [searchMovies, setSearchMovies] = React.useState([]); // все фильмы, удовлетворяющие поисковым параметрам
+  const [moviesList, setMoviesList] = React.useState([]); // фильмы, которые отображаются при рендере
   const [searchText, setSearchText] = React.useState('');
-  const [searchMovies, setSearchMovies] = React.useState([]);
-  const [moviesList, setMoviesList] = React.useState([]);
   const [searchErrorText, setSearchErrorText] = React.useState('');
   const [cardQuantity, setCardQuantity] = React.useState(0);
   const [moreCardQuantity, setMoreCardQuantity] = React.useState(0);
   const [searchBarText, setSearchBarText] = React.useState('');
   const [checkboxShortFilms, setCheckboxShortFilms] = React.useState(false);
   const windowWidth = useWindowInnerWidth();
+  const localAllMovie = JSON.parse(localStorage.getItem('allMovies'));
   const localStorageData = JSON.parse(localStorage.getItem('localStorageData'));
   const shortFilms = JSON.parse(localStorage.getItem('shortFilms'));
 
+  // досатёт из хранилища фильмы, если они есть
   React.useEffect(() => {
     if (localStorageData) {
+      setAllMovies(localAllMovie);
       setSearchBarText(localStorageData.searchText);
       setCheckboxShortFilms(shortFilms);
       setMoviesList(localStorageData.movies);
@@ -47,6 +50,7 @@ function Movies(props) {
     }
   }, []);
 
+  // задаёт количество карточек в зависимовти от разрешения экрана
   React.useEffect(() => {
     if (windowWidth >= WINDOW_WIDTH_PC) {
       setCardQuantity(CARD_QUANTITY_PC);
@@ -62,30 +66,31 @@ function Movies(props) {
     setMoreCardQuantity(MORE_CARD_QUANTITY_MOBILE);
   }, [windowWidth]);
 
-  React.useEffect(() => {
-    checkboxShortFilms
-      ? setMoviesList(searchMovies.filter((movie) => movie.duration <= DURATION_SHORT_FILM))
-      : setMoviesList(searchMovies);
-    localStorage.setItem('shortFilms', checkboxShortFilms);
-  }, [checkboxShortFilms, searchMovies]);
 
+  // ищет фильмы, когда переключается чекбокс
   React.useEffect(() => {
-    if (cardQuantity && localStorageData) {
-      setSearchMovies(localStorageData.movies);
-      setMoviesList(localStorageData.movies.slice(0, cardQuantity));
+    if (allMovies && allMovies.length !== 0) {
+      searchFilms(allMovies, searchBarText, checkboxShortFilms);
     }
-  }, [cardQuantity]);
+  }, [checkboxShortFilms]);
+
+  // отображает количество карточек в зависимоти от разрешения экрана
+  React.useEffect(() => {
+    if (cardQuantity && searchMovies.length !== 0) {
+      setMoviesList(searchMovies.slice(0, cardQuantity));
+    }
+  }, [cardQuantity, searchMovies]);
 
   function handleSearch(values) {
     setSearchErrorText('');
-    setSearchText('');
     setMoviesList([]);
     if (allMovies.length === 0) {
       setIsLoading(true);
       loadMovies()
         .then((movies) => {
           setAllMovies(movies);
-          searchFilms(movies, values);
+          searchFilms(movies, values.search, values.checkbox);
+          localStorage.setItem('allMovies', JSON.stringify(movies));
         })
         .catch(err => {
           console.log(err);
@@ -95,19 +100,29 @@ function Movies(props) {
           setIsLoading(false);
         });
     } else {
-      searchFilms(allMovies, values);
+      searchFilms(allMovies, values.search, values.checkbox);
     }
   }
 
-  function searchFilms(movies, values) {
-    const searchMovies = getSearchMovieList(movies, values);
+  /**
+   * осуществляет поиск фильмов по заданным параметрам
+   * @param {*} movies - фильмы, по которым осуществляется поиск
+   * @param {*} search - текст из строки поиска
+   * @param {*} checkbox - чекбокс короткометражных фильмов
+   */
+  function searchFilms(movies, search, checkbox) {
+    setSearchText('');
+    const searchMovies = getSearchMovieList(movies, search, checkbox);
     const viewMovies = searchMovies.slice(0, cardQuantity);
     const localStorageData = {
-      searchText: values.search,
+      searchText: search,
       movies: searchMovies,
     }
     localStorage.setItem('localStorageData', JSON.stringify(localStorageData));
-    localStorage.setItem('shortFilms', values.checkbox);
+    localStorage.setItem('shortFilms', checkbox);
+
+    // добавляет значение в стейт
+    setSearchBarText(search);
     setSearchMovies(searchMovies);
     setMoviesList(viewMovies);
     if (searchMovies.length === 0) {

@@ -16,7 +16,7 @@ export default function useValidation(isValid) {
     if (e.target.name === 'email') {
       if (!validator.isEmail(e.target.value)) {
         setIsWrong(true);
-        setErrorMessage('Некорректный адрес электронной почты');
+        setErrorMessage('Некорректный адрес электронной почты.');
       } else {
         setIsWrong(false);
         setErrorMessage('')
