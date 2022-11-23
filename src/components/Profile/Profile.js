@@ -33,7 +33,7 @@ function Profile(props) {
         className="profile__form"
         onSubmit={handleSubmit}
         noValidate>
-        <h1 className="profile__title">Привет, Виталий!</h1>
+        <h1 className="profile__title">Привет, {currentUser.name}!</h1>
         <label className="profile__label">
           Имя
           <input

@@ -67,7 +67,6 @@ function App() {
   }
 
   function handleLogin(data, textSuccess) {
-    setIsLoading(false);
     setTextSuccess(textSuccess);
     setRequestDone(true);
     localStorage.setItem('isLogin', true);
@@ -92,6 +91,7 @@ function App() {
         console.log(err);
       })
       .finally(() => {
+        setIsLoading(false);
         setRequestDonePopupOpen(true);
       });
   }
@@ -109,6 +109,7 @@ function App() {
         console.log(err);
       })
       .finally(() => {
+        setIsLoading(false);
         setRequestDonePopupOpen(true);
       });
   }
@@ -118,7 +119,6 @@ function App() {
     setTextSuccess('Изменения сохранены.');
     api.editProfile(newData)
       .then((data) => {
-        setIsLoading(false);
         setRequestDone(true);
         setCurrentUser(data);
         closeAllPopups();
@@ -128,6 +128,7 @@ function App() {
         console.log(err);
       })
       .finally(() => {
+        setIsLoading(false);
         setRequestDonePopupOpen(true);
       });
   }
