@@ -44,6 +44,7 @@ function Register({ onRegister, isLoading }) {
               }}
               placeholder="Введите имя"
               autoComplete="off"
+              disabled={isLoading}
               required
             />
             <span className="sign__error">
@@ -64,6 +65,7 @@ function Register({ onRegister, isLoading }) {
               }}
               placeholder="Введите email"
               autoComplete="off"
+              disabled={isLoading}
               required
             />
             <span className="sign__error">
@@ -84,6 +86,7 @@ function Register({ onRegister, isLoading }) {
               }}
               placeholder="Введите пароль"
               autoComplete="off"
+              disabled={isLoading}
               required
             />
             <span className="sign__error">
@@ -100,6 +103,7 @@ function Register({ onRegister, isLoading }) {
               || values.name === ""
               || values.email === ""
               || values.password === ""
+              || isLoading
             }>
               {isLoading ? 'Отправка данных' : 'Зарегистрироваться'}
             </button>

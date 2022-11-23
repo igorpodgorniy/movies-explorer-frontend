@@ -41,6 +41,7 @@ function Login({ onLogin, isLoading }) {
               }}
               placeholder="Введите email"
               autoComplete="off"
+              disabled={isLoading}
               required
             />
             <span className="sign__error">
@@ -61,6 +62,7 @@ function Login({ onLogin, isLoading }) {
               }}
               placeholder="Введите пароль"
               autoComplete="off"
+              disabled={isLoading}
               required
             />
             <span className="sign__error">
@@ -75,6 +77,7 @@ function Login({ onLogin, isLoading }) {
               || passwordValid.isWrong
               || values.email === ""
               || values.password === ""
+              || isLoading
             }>
               {isLoading ? 'Отправка данных' : 'Войти'}
             </button>

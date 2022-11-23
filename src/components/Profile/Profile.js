@@ -50,6 +50,7 @@ function Profile(props) {
             }}
             placeholder="Введите имя"
             autoComplete="off"
+            disabled={isLoading}
             required
           />
           <span className="profile__error">
@@ -70,6 +71,7 @@ function Profile(props) {
             }}
             placeholder="Введите email"
             autoComplete="off"
+            disabled={isLoading}
             required
           />
           <span className="profile__error profile__error_type_last ">
@@ -84,6 +86,7 @@ function Profile(props) {
             && values.name === currentUser.name)
             || emailValid.isWrong
             || nameValid.isWrong
+            || isLoading
           }>
             {isLoading ? 'Сохранение...' : 'Редактировать'}
           </button>
