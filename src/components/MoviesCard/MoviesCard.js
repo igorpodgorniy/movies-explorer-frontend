@@ -1,19 +1,55 @@
 import './MoviesCard.css';
-import photo from '../../images/film-frame.png';
 import { useHistory } from 'react-router-dom';
 
 function MoviesCard(props) {
   const history = useHistory();
-  const { favorite } = props;
-  let movieFavoriteClassName = `film__favorite ${favorite ? 'film__favorite_active' : ''}`;
-  movieFavoriteClassName = `${movieFavoriteClassName} ${history.location.pathname === '/saved-movies' ? 'film__favorite_active-save' : ''}`
+  const {
+    movie,
+    onMovieLike,
+    onMovieDelete,
+    isSavedMovie
+  } = props;
+
+  const hours = Math.trunc(movie.duration / 60);
+  const minutes = movie.duration % 60;
+  const duration = `${hours ? hours + 'ч' : ''}${minutes ? minutes + 'м' : ''}`;
+  const isSavedMoviePage = history.location.pathname === '/saved-movies';
+
+  let movieFavoriteClassName = `film__favorite ${isSavedMovie ? 'film__favorite_active' : ''}`;
+  movieFavoriteClassName = `${movieFavoriteClassName} ${isSavedMoviePage
+    ? 'film__favorite_active-save'
+    : ''}`;
+
+  const imgUrl = movie.image.url
+    ? `https://api.nomoreparties.co/${movie.image.url}`
+    : movie.image;
+
+  function handleMovieLike() {
+    onMovieLike(movie);
+  }
+
+  function handleMovieDelete() {
+    const id = isSavedMoviePage ? movie._id : movie.id;
+    onMovieDelete(id);
+  }
   return (
     <article className="film">
-      <img className="film__img" src={photo} alt="Кадр из фильма '33 слова о дизайне'" />
+      <a className="film__link" href={movie.trailerLink} target="_blank" rel="noreferrer">
+        <img
+          className="film__img"
+          src={imgUrl}
+          alt={`Кадр из фильма '${movie.nameRU}'`}
+        />
+      </a>
       <div className="film__info">
-        <h2 className="film__name">33 слова о дизайне</h2>
-        <p className="film__duration">1ч42м</p>
-        <button className={movieFavoriteClassName} type="button" aria-label="Сохранить фильм"></button>
+        <h2 className="film__name" title={movie.nameRU}>{movie.nameRU}</h2>
+        <p className="film__duration">{duration}</p>
+        <button
+          className={movieFavoriteClassName}
+          onClick={isSavedMovie ? handleMovieDelete : handleMovieLike}
+          type="button"
+          aria-label="Сохранить фильм"
+        ></button>
       </div>
     </article>
   );

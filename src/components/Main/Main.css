@@ -3,6 +3,10 @@
   margin: 0 auto;
 }
 
+.main-page {
+  min-height: 75vh;
+}
+
 .section-title {
   margin: 0;
   padding-bottom: 22px;

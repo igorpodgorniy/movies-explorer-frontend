@@ -5,14 +5,15 @@
   box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.05);
 }
 
-.film_hidden {
-  display: none;
+.film__link {
+  text-decoration: none;
 }
 
 .film__img {
   border-radius: 10px 10px 0 0;
   width: 100%;
-  height: auto;
+  height: 147px;
+  object-fit: cover;
 }
 
 .film__info {
@@ -31,6 +32,10 @@
   font-size: 13px;
   line-height: 1.23;
   color: #000000;
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .film__duration {
@@ -78,31 +83,60 @@
   box-shadow: none;
   border-radius: 0;
   border: 0;
-  margin-top: 10px;
-  margin-right: 12px;
+  margin-top: 0;
+  margin-right: 0;
   background-color: #FFFFFF;
   background-image: url(../../images/cross.svg);
   background-repeat: no-repeat;
-  background-position: 4px 4px;
+  background-position: 6px 14px;
+  width: 30px;
+  height: 30px;
   transition: background-position-y .2s;
 }
 
 .film__favorite_active-save:hover {
   box-shadow: none;
-  background-position-y: 3px;
+  background-position-y: 12px;
   transition: background-position-y .2s;
 }
 
 .film__favorite_active-save:active {
+  margin-top: 0;
   box-shadow: none;
-  background-position-y: 3px;
+  background-position-y: 16px;
   transition: background-position-y .2s;
+}
+
+@media screen and (max-width: 875px) {
+  .film {
+    max-width: 439px;
+  }
+
+  .film__name {
+    max-width: 280px;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .film {
     max-width: 339px;
     margin-right: 0;
+  }
+
+  .film__name {
+    max-width: 220px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .film__name {
+    max-width: 180px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .film__name {
+    max-width: 250px;
   }
 }
 

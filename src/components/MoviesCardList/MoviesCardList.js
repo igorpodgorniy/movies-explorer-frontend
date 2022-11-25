@@ -2,63 +2,48 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { useHistory } from 'react-router-dom';
 
-function MoviesCardList() {
+function MoviesCardList(props) {
+  const {
+    moviesList,
+    searchMovies,
+    searchText,
+    handleMoreFilms,
+    onMovieLike,
+    savedMovies,
+    onMovieDelete,
+  } = props;
   const history = useHistory();
+
+  function isSavedMovie(savedMovies, movie) {
+    return savedMovies.find((item) => item.movieId === (movie.id || movie.movieId));
+  };
+
   return (
     <>
+      {searchText && <h3 className="films__search-result-text">{searchText}</h3>}
       <ul className="films">
-        <li>
-          <MoviesCard favorite={true}/>
+      { moviesList.map((movie) => (
+        <li key={movie.id || movie.movieId}>
+          <MoviesCard
+            movie={movie}
+            onMovieLike={onMovieLike}
+            onMovieDelete={onMovieDelete}
+            isSavedMovie={isSavedMovie(savedMovies, movie)}
+          />
         </li>
-        <li>
-          <MoviesCard />
-        </li>
-        <li>
-          <MoviesCard favorite={true}/>
-        </li>
-        <li>
-          <MoviesCard />
-        </li>
-        <li>
-          <MoviesCard />
-        </li>
-        <li>
-          <MoviesCard />
-        </li>
-        <li>
-          <MoviesCard favorite={true}/>
-        </li>
-        <li>
-          <MoviesCard />
-        </li>
-        <li>
-          <MoviesCard />
-        </li>
-        <li>
-          <MoviesCard />
-        </li>
-        <li>
-          <MoviesCard favorite={true}/>
-        </li>
-        <li>
-          <MoviesCard />
-        </li>
-        <li>
-          <MoviesCard />
-        </li>
-        <li>
-          <MoviesCard />
-        </li>
-        <li>
-          <MoviesCard />
-        </li>
-        <li>
-          <MoviesCard favorite={true}/>
-        </li>
+      ))}
       </ul>
-      {history.location.pathname !== '/saved-movies' &&
+      {history.location.pathname !== '/saved-movies'
+        && moviesList.length !== 0
+        && moviesList.length !== searchMovies.length &&
         <section className="more">
-          <button className="more__button" type="button" aria-label="Подгрузить ещё фильмы">Ещё</button>
+          <button
+            className="more__button"
+            type="button"
+            onClick={handleMoreFilms}
+            aria-label="Подгрузить ещё фильмы">
+              Ещё
+            </button>
         </section>
       }
     </>

@@ -36,6 +36,9 @@
   color: #000000;
   margin-top: 184px;
   transition: text-shadow .2s, margin-bottom .2s, margin-top .2s;
+  border: 0;
+  background-color: #FFFFFF;
+  cursor: pointer;
 }
 
 .not-found__link:hover {
