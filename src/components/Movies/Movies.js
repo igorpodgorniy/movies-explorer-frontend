@@ -1,6 +1,5 @@
 import './Movies.css';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
@@ -26,8 +25,6 @@ import {
 function Movies(props) {
   /* savedMovies - сохранённые фильмы пользователя, полученные через api */
   const { savedMovies, setSavedMovies, onSignOut } = props;
-
-  const history = useHistory();
 
   const [isLoading, setIsLoading] = React.useState(false);
   const [allMovies, setAllMovies] = React.useState([]); // все фильмы, загруженные при первом поиске
@@ -185,14 +182,23 @@ function Movies(props) {
       {isLoading && <Preloader />}
       <MoviesCardList
         moviesList={moviesList}
-        searchMovies={searchMovies}
         searchText={searchText}
         savedMovies={savedMovies}
-        setSavedMovies={setSavedMovies}
-        handleMoreFilms={handleMoreFilms}
         onMovieLike={handleMovieLike}
         onMovieDelete={handleMovieDelete}
       />
+      { moviesList.length !== 0
+        && moviesList.length !== searchMovies.length &&
+        <section className="more">
+          <button
+            className="more__button"
+            type="button"
+            onClick={handleMoreFilms}
+            aria-label="Подгрузить ещё фильмы">
+              Ещё
+            </button>
+        </section>
+      }
     </>
   );
 }

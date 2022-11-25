@@ -1,18 +1,14 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import { useHistory } from 'react-router-dom';
 
 function MoviesCardList(props) {
   const {
     moviesList,
-    searchMovies,
     searchText,
-    handleMoreFilms,
     onMovieLike,
     savedMovies,
     onMovieDelete,
   } = props;
-  const history = useHistory();
 
   function isSavedMovie(savedMovies, movie) {
     return savedMovies.find((item) => item.movieId === (movie.id || movie.movieId));
@@ -33,19 +29,6 @@ function MoviesCardList(props) {
         </li>
       ))}
       </ul>
-      {history.location.pathname !== '/saved-movies'
-        && moviesList.length !== 0
-        && moviesList.length !== searchMovies.length &&
-        <section className="more">
-          <button
-            className="more__button"
-            type="button"
-            onClick={handleMoreFilms}
-            aria-label="Подгрузить ещё фильмы">
-              Ещё
-            </button>
-        </section>
-      }
     </>
   );
 }
